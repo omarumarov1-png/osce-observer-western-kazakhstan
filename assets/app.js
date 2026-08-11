@@ -37,7 +37,7 @@ function renderHome(){
     const section = document.createElement('div');
     section.className = 'oblast-section';
     const totalLow = regions.reduce((s,r)=> s + (r.conf.low||0), 0);
-    section.innerHTML = `<h2 class="oblast-title">${fmtOblastLabel(ob)} — ${regions.reduce((s,r)=>s+r.count,0)} участков</h2>
+    section.innerHTML = `<h2 class="oblast-title">${fmtOblastLabel(ob)} — ${regions.reduce((s,r)=>s+r.count,0)} stations</h2>
       <div class="card-grid">${regions.map(r=>cardHtml(r)).join('')}</div>`;
     container.appendChild(section);
   });
@@ -50,9 +50,9 @@ function cardHtml(r){
     <h3>${r.title}</h3>
     <div class="sub">${r.subtitle}</div>
     <div class="meta">
-      <span class="chip">${r.count} УИК</span>
-      <span class="chip">${r.groupCount} округов</span>
-      ${lowN ? `<span class="chip warn">${lowN} ≈ приблизительно</span>` : (highN===r.count ? `<span class="chip">все подтверждены</span>` : '')}
+      <span class="chip">${r.count} stations</span>
+      <span class="chip">${r.groupCount} districts</span>
+      ${lowN ? `<span class="chip warn">${lowN} ≈ approximate</span>` : (highN===r.count ? `<span class="chip">all verified</span>` : '')}
     </div>
   </a>`;
 }
@@ -66,8 +66,8 @@ async function openRegion(id){
   document.getElementById('region').classList.add('active');
 
   if(mapState && mapState.id === id){ return; } // already loaded
-  document.getElementById('side').querySelector('#head h1').textContent = meta.title + ' · УИК';
-  document.getElementById('head-sub').textContent = `${meta.count} избирательных участков — ${meta.subtitle}. Нажмите на участок в списке или на карте.`;
+  document.getElementById('side').querySelector('#head h1').textContent = meta.title + ' · Polling Stations';
+  document.getElementById('head-sub').textContent = `${meta.count} polling stations — ${meta.subtitle}. Click a station in the list or on the map.`;
   document.getElementById('cTot').textContent = meta.count;
 
   const res = await fetch('data/' + meta.file);
@@ -83,12 +83,12 @@ function mountMap(id, meta, PECS){
   const map = L.map('map', {zoomControl:true, minZoom:3, maxZoom:19}).setView(meta.center, meta.count > 60 ? 12 : 9);
 
   const bases = {
-    'Схема (улицы)': L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {subdomains:'abcd', maxZoom:20, attribution:'© OpenStreetMap © CARTO'}),
-    'Светлая': L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {subdomains:'abcd', maxZoom:20, attribution:'© OpenStreetMap © CARTO'}),
+    'Streets': L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {subdomains:'abcd', maxZoom:20, attribution:'© OpenStreetMap © CARTO'}),
+    'Light': L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {subdomains:'abcd', maxZoom:20, attribution:'© OpenStreetMap © CARTO'}),
     'OSM': L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {subdomains:'abc', maxZoom:19, attribution:'© OpenStreetMap'}),
-    'Спутник': L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {maxZoom:19, attribution:'© Esri'}),
+    'Satellite': L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {maxZoom:19, attribution:'© Esri'}),
   };
-  const activeBase = bases['Схема (улицы)'];
+  const activeBase = bases['Streets'];
   activeBase.addTo(map);
   activeBase.on('load', () => { const l=document.getElementById('loading'); if(l) l.style.display='none'; });
   setTimeout(()=>{ const l=document.getElementById('loading'); if(l) l.style.display='none'; }, 2500);
@@ -103,15 +103,15 @@ function mountMap(id, meta, PECS){
       className:'', iconSize:[sz,sz], iconAnchor:[sz/2,sz/2], popupAnchor:[0,-sz/2-1]});
   }
   function popHtml(p){
-    let h = `<div class="pop"><b class="t">УИК №${p.n}</b><span class="chip2">${p.group}</span>`;
+    let h = `<div class="pop"><b class="t">Station #${p.n}</b><span class="chip2">${p.group}</span>`;
     if(p.b) h += `<div class="bd">${p.b}</div>`;
     if(p.a) h += `<div class="ad">${p.a}</div>`;
-    h += `<div class="co" title="Скопировать координаты" onclick="navigator.clipboard&&navigator.clipboard.writeText('${p.lat}, ${p.lng}')">${p.lat.toFixed(5)}, ${p.lng.toFixed(5)} ⧉</div>`;
-    if(p.c==='low') h += `<div class="w">≈ Приблизительная привязка — уточните на месте${p.note?': '+p.note:''}</div>`;
-    else if(p.c==='med') h += `<div class="w">Адрес требует проверки на месте${p.note?' («'+p.note+'»)':''}</div>`;
+    h += `<div class="co" title="Copy coordinates" onclick="navigator.clipboard&&navigator.clipboard.writeText('${p.lat}, ${p.lng}')">${p.lat.toFixed(5)}, ${p.lng.toFixed(5)} ⧉</div>`;
+    if(p.c==='low') h += `<div class="w">≈ Approximate location — verify on the ground${p.note?': '+p.note:''}</div>`;
+    else if(p.c==='med') h += `<div class="w">Address not independently verified${p.note?' ("'+p.note+'")':''}</div>`;
     const g = `https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lng}`;
     const y = `https://yandex.ru/maps/?pt=${p.lng},${p.lat}&z=16&l=map`;
-    h += `<div class="links"><a href="${g}" target="_blank" rel="noopener">Google&nbsp;Maps</a><a href="${y}" target="_blank" rel="noopener">Яндекс</a></div></div>`;
+    h += `<div class="links"><a href="${g}" target="_blank" rel="noopener">Google&nbsp;Maps</a><a href="${y}" target="_blank" rel="noopener">Yandex&nbsp;Maps</a></div></div>`;
     return h;
   }
 
@@ -138,17 +138,17 @@ function mountMap(id, meta, PECS){
 
   const lg = L.control({position:'bottomright'});
   lg.onAdd = function(){ const d=L.DomUtil.create('div','legend');
-    d.innerHTML = `<h4>Обозначения</h4>
-      <div class="li"><span class="lm" style="background:${AC};color:#fff;border:2px solid #fff">№</span> избирательный участок</div>
-      <div class="li"><span class="lm" style="background:#fff;border:2px dashed ${AC};color:${AC}">≈</span> приблизит. — проверить</div>
-      <div class="li"><span class="lm" style="background:#0f172a;color:#fff">15</span> группа участков (клик)</div>`;
+    d.innerHTML = `<h4>Legend</h4>
+      <div class="li"><span class="lm" style="background:${AC};color:#fff;border:2px solid #fff">№</span> polling station</div>
+      <div class="li"><span class="lm" style="background:#fff;border:2px dashed ${AC};color:${AC}">≈</span> approximate — verify</div>
+      <div class="li"><span class="lm" style="background:#0f172a;color:#fff">15</span> cluster (click to expand)</div>`;
     L.DomEvent.disableClickPropagation(d); return d; };
   lg.addTo(map);
 
   const ctl = L.control({position:'topleft'});
   ctl.onAdd = function(){ const d=L.DomUtil.create('div','mapbtns');
-    d.innerHTML = `<button class="mbtn" id="resetBtn" title="Показать весь регион">⤢ Весь регион</button>
-      <button class="mbtn ${clustered?'on':''}" id="clusterBtn" title="Группировать близкие участки">◉ Группировать</button>`;
+    d.innerHTML = `<button class="mbtn" id="resetBtn" title="Show whole region">⤢ Whole region</button>
+      <button class="mbtn ${clustered?'on':''}" id="clusterBtn" title="Cluster nearby stations">◉ Cluster</button>`;
     L.DomEvent.disableClickPropagation(d);
     setTimeout(()=>{
       document.getElementById('resetBtn').onclick = () => map.fitBounds(allBounds, {padding:[40,40]});
@@ -166,7 +166,7 @@ function mountMap(id, meta, PECS){
   document.getElementById('cGrp').textContent = groups.length;
   document.getElementById('cApx').textContent = PECS.filter(p=>p.c==='low').length;
   const groupSel = document.getElementById('groupSel');
-  groupSel.innerHTML = '<option value="all">Все округа</option>';
+  groupSel.innerHTML = '<option value="all">All districts</option>';
   groups.forEach(g=>{ const opt=document.createElement('option'); opt.value=g; opt.textContent=g; groupSel.appendChild(opt); });
 
   const listEl = document.getElementById('list'), emptyEl = document.getElementById('empty'), qEl = document.getElementById('q');
@@ -193,22 +193,26 @@ function mountMap(id, meta, PECS){
       const row = document.createElement('div');
       row.className = 'row' + (p.n===selNum ? ' sel' : '');
       row.innerHTML = `<div class="num${approx?' approx':''}">${p.n}</div>
-        <div class="meta"><div class="bldg">${p.b||'—'}</div><div class="addr">${p.a}</div><div class="grp">${p.group}</div>${approx?'<span class="flag">≈ проверить на месте</span>':(p.c==='med'?'<span class="flag med">уточнить адрес</span>':'')}</div>`;
+        <div class="meta"><div class="bldg">${p.b||'—'}</div><div class="addr">${p.a}</div><div class="grp">${p.group}</div>${approx?'<span class="flag">≈ verify on site</span>':(p.c==='med'?'<span class="flag med">unverified address</span>':'')}</div>`;
       row.onmouseenter = () => highlight(p.n, true);
       row.onmouseleave = () => highlight(p.n, false);
       row.onclick = () => { selNum = p.n; focusPec(p.n); render(); };
       listEl.appendChild(row);
     });
     emptyEl.style.display = arr.length ? 'none' : 'block';
-    shownCount.textContent = 'Показано: ' + arr.length + ' из ' + PECS.length;
+    shownCount.textContent = 'Showing ' + arr.length + ' of ' + PECS.length;
     clrBtn.style.display = qEl.value ? 'block' : 'none';
   }
   function highlight(n, on){ const m = markers[n]; if(!m) return; m.setIcon(pinIcon(m._pec, on)); }
   function focusPec(n){
     const m = markers[n]; if(!m) return;
     const go = () => m.openPopup();
-    map.setView(m.getLatLng(), 15, {animate:true});
-    if(clustered && hasCluster && cluster.zoomToShowLayer){ cluster.zoomToShowLayer(m, go); } else { setTimeout(go, 250); }
+    if(clustered && hasCluster && cluster.zoomToShowLayer){
+      cluster.zoomToShowLayer(m, go);
+    } else {
+      map.setView(m.getLatLng(), 15, {animate:true});
+      setTimeout(go, 300);
+    }
   }
   qEl.oninput = render;
   clrBtn.onclick = () => { qEl.value=''; render(); qEl.focus(); };
@@ -222,7 +226,7 @@ function mountMap(id, meta, PECS){
   });
   document.getElementById('sortBtn').onclick = function(){
     sortMode = sortMode==='num' ? 'name' : 'num';
-    this.textContent = 'Сортировка: ' + (sortMode==='num' ? '№ ▲' : 'по названию');
+    this.textContent = 'Sort: ' + (sortMode==='num' ? '# ▲' : 'by name');
     render();
   };
   map.on('popupopen', e => { if(e.popup._source && e.popup._source._pec){ selNum = e.popup._source._pec.n; render(); } });

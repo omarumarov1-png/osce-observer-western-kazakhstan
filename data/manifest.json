@@ -1,9 +1,9 @@
 [
   {
     "id": "aktobe",
-    "title": "Актобе",
-    "subtitle": "город Актобе, Актюбинская область",
-    "oblast": "Актюбинская область",
+    "title": "Aktobe",
+    "subtitle": "City of Aktobe, Aktobe Oblast",
+    "oblast": "Aktobe Oblast",
     "file": "aktobe.json",
     "count": 168,
     "center": [
@@ -29,9 +29,9 @@
   },
   {
     "id": "uralsk",
-    "title": "Уральск",
-    "subtitle": "город Уральск, Западно-Казахстанская область",
-    "oblast": "Западно-Казахстанская область",
+    "title": "Uralsk",
+    "subtitle": "City of Uralsk, West Kazakhstan Oblast",
+    "oblast": "West Kazakhstan Oblast",
     "file": "uralsk.json",
     "count": 136,
     "center": [
@@ -56,9 +56,9 @@
   },
   {
     "id": "chapaev",
-    "title": "Акжаикский район",
-    "subtitle": "административный центр — Чапаево, Западно-Казахстанская область",
-    "oblast": "Западно-Казахстанская область",
+    "title": "Akzhaiyk District",
+    "subtitle": "Administrative center — Chapaevo, West Kazakhstan Oblast",
+    "oblast": "West Kazakhstan Oblast",
     "file": "chapaev.json",
     "count": 45,
     "center": [
@@ -83,9 +83,9 @@
   },
   {
     "id": "aksai",
-    "title": "Бурлинский район",
-    "subtitle": "город Аксай, Западно-Казахстанская область",
-    "oblast": "Западно-Казахстанская область",
+    "title": "Burli District",
+    "subtitle": "City of Aksai, West Kazakhstan Oblast",
+    "oblast": "West Kazakhstan Oblast",
     "file": "aksai.json",
     "count": 33,
     "center": [
@@ -110,9 +110,9 @@
   },
   {
     "id": "khromtau",
-    "title": "Хромтауский район",
-    "subtitle": "город Хромтау, Актюбинская область",
-    "oblast": "Актюбинская область",
+    "title": "Khromtau District",
+    "subtitle": "City of Khromtau, Aktobe Oblast",
+    "oblast": "Aktobe Oblast",
     "file": "khromtau.json",
     "count": 27,
     "center": [
@@ -137,9 +137,9 @@
   },
   {
     "id": "martuk",
-    "title": "Мартукский район",
-    "subtitle": "село Мартук, Актюбинская область",
-    "oblast": "Актюбинская область",
+    "title": "Martuk District",
+    "subtitle": "Village of Martuk, Aktobe Oblast",
+    "oblast": "Aktobe Oblast",
     "file": "martuk.json",
     "count": 32,
     "center": [
@@ -164,9 +164,9 @@
   },
   {
     "id": "kobda",
-    "title": "Кобдинский район",
-    "subtitle": "село Кобда, Актюбинская область",
-    "oblast": "Актюбинская область",
+    "title": "Kobda District",
+    "subtitle": "Village of Kobda, Aktobe Oblast",
+    "oblast": "Aktobe Oblast",
     "file": "kobda.json",
     "count": 28,
     "center": [
@@ -191,9 +191,9 @@
   },
   {
     "id": "badamsha",
-    "title": "Каргалинский район",
-    "subtitle": "село Бадамша, Актюбинская область",
-    "oblast": "Актюбинская область",
+    "title": "Karagaly District",
+    "subtitle": "Village of Badamsha, Aktobe Oblast",
+    "oblast": "Aktobe Oblast",
     "file": "badamsha.json",
     "count": 4,
     "center": [
@@ -217,9 +217,9 @@
   },
   {
     "id": "alga",
-    "title": "Алгинский и Мугалжарский районы",
-    "subtitle": "города Алга и Кандыагаш, Актюбинская область",
-    "oblast": "Актюбинская область",
+    "title": "Alga & Mugalzhar Districts",
+    "subtitle": "Cities of Alga and Kandyagash, Aktobe Oblast",
+    "oblast": "Aktobe Oblast",
     "file": "alga.json",
     "count": 18,
     "center": [

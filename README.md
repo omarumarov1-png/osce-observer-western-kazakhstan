@@ -1,6 +1,6 @@
 # OSCE Observer — Western Kazakhstan
 
-Interactive map of polling station (УИК) locations across Aktobe and West Kazakhstan oblasts — built to support election observation fieldwork.
+Interactive map of polling station (UIK) locations across Aktobe and West Kazakhstan oblasts — built to support election observation fieldwork.
 
 **[Open the live map →](https://omarumarov1-png.github.io/osce-observer-western-kazakhstan/)**
 
@@ -24,8 +24,8 @@ Source addresses come from official akimat (local government) decrees listing po
 Every polling station is tagged with a confidence level:
 
 - **High** — verified against a specific building or a direct institution-name match from a second independent source.
-- **Medium** — a real address match, but not independently cross-checked; marked "уточнить адрес" (verify address) in the UI.
-- **Low** — no reliable geocoding match was found; placed at a village or district centroid as a rough estimate, marked "≈ приблизительно" and flagged in both the sidebar and the map popup.
+- **Medium** — a real address match, but not independently cross-checked; marked "unverified address" in the UI.
+- **Low** — no reliable geocoding match was found; placed at a village or district centroid as a rough estimate, marked "≈ approximate" and flagged in both the sidebar and the map popup.
 
 Rural districts generally have lower precision than the two city maps (Aktobe, Uralsk), since OpenStreetMap and 2GIS both have much sparser coverage of small villages than of city streets. Any pin marked medium or low confidence should be verified on the ground before being relied on for fieldwork.
 
