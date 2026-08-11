@@ -1,4 +1,5 @@
 const AC = '#1d4ed8';
+const GROUP_PALETTE = ['#1d4ed8', '#c2410c', '#059669', '#7c3aed', '#db2777', '#0891b2'];
 let MANIFEST = null;
 let mapState = null; // holds Leaflet map + markers etc. for the currently open region
 
@@ -82,6 +83,12 @@ function mountMap(id, meta, PECS){
 
   const map = L.map('map', {zoomControl:true, minZoom:3, maxZoom:19}).setView(meta.center, meta.count > 60 ? 12 : 9);
 
+  const allGroups = [...new Set(PECS.map(p=>p.group))].sort((a,b)=>a.localeCompare(b,'ru'));
+  const multiColor = allGroups.length > 1 && allGroups.length <= GROUP_PALETTE.length;
+  const groupColor = {};
+  if(multiColor){ allGroups.forEach((g,i)=> groupColor[g] = GROUP_PALETTE[i % GROUP_PALETTE.length]); }
+  const colorFor = (group) => multiColor ? groupColor[group] : AC;
+
   const bases = {
     'Streets': L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {subdomains:'abcd', maxZoom:20, attribution:'© OpenStreetMap © CARTO'}),
     'Light': L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {subdomains:'abcd', maxZoom:20, attribution:'© OpenStreetMap © CARTO'}),
@@ -97,13 +104,14 @@ function mountMap(id, meta, PECS){
 
   function pinIcon(p, hl){
     const approx = p.c==='low', big = String(p.n).length>2, sz = approx?26:25;
-    const bg = approx ? '#fff' : AC;
-    const style = `width:${sz}px;height:${sz}px;font-size:${big?10:11.5}px;background:${bg};` + (approx ? `border-color:${AC};` : '');
+    const c = colorFor(p.group);
+    const bg = approx ? '#fff' : c;
+    const style = `width:${sz}px;height:${sz}px;font-size:${big?10:11.5}px;background:${bg};` + (approx ? `border-color:${c};` : '');
     return L.divIcon({html:`<div class="pecpin ${approx?'approx':''}${hl?' hl':''}" style="${style}">${p.n}</div>`,
       className:'', iconSize:[sz,sz], iconAnchor:[sz/2,sz/2], popupAnchor:[0,-sz/2-1]});
   }
   function popHtml(p){
-    let h = `<div class="pop"><b class="t">Station #${p.n}</b><span class="chip2">${p.group}</span>`;
+    let h = `<div class="pop"><b class="t">Station #${p.n}</b><span class="chip2" style="background:${colorFor(p.group)}">${p.group}</span>`;
     if(p.b) h += `<div class="bd">${p.b}</div>`;
     if(p.a) h += `<div class="ad">${p.a}</div>`;
     h += `<div class="co" title="Copy coordinates" onclick="navigator.clipboard&&navigator.clipboard.writeText('${p.lat}, ${p.lng}')">${p.lat.toFixed(5)}, ${p.lng.toFixed(5)} ⧉</div>`;
@@ -138,8 +146,11 @@ function mountMap(id, meta, PECS){
 
   const lg = L.control({position:'bottomright'});
   lg.onAdd = function(){ const d=L.DomUtil.create('div','legend');
+    const districtRows = multiColor
+      ? allGroups.map(g=>`<div class="li"><span class="lm" style="background:${groupColor[g]};color:#fff;border:2px solid #fff">№</span> ${g}</div>`).join('')
+      : `<div class="li"><span class="lm" style="background:${AC};color:#fff;border:2px solid #fff">№</span> polling station</div>`;
     d.innerHTML = `<h4>Legend</h4>
-      <div class="li"><span class="lm" style="background:${AC};color:#fff;border:2px solid #fff">№</span> polling station</div>
+      ${districtRows}
       <div class="li"><span class="lm" style="background:#fff;border:2px dashed ${AC};color:${AC}">≈</span> approximate — verify</div>
       <div class="li"><span class="lm" style="background:#0f172a;color:#fff">15</span> cluster (click to expand)</div>`;
     L.DomEvent.disableClickPropagation(d); return d; };
@@ -190,9 +201,11 @@ function mountMap(id, meta, PECS){
     listEl.innerHTML = '';
     arr.forEach(p=>{
       const approx = p.c==='low';
+      const c = colorFor(p.group);
+      const numStyle = approx ? `border-color:${c};color:${c}` : `background:${c}`;
       const row = document.createElement('div');
       row.className = 'row' + (p.n===selNum ? ' sel' : '');
-      row.innerHTML = `<div class="num${approx?' approx':''}">${p.n}</div>
+      row.innerHTML = `<div class="num${approx?' approx':''}" style="${numStyle}">${p.n}</div>
         <div class="meta"><div class="bldg">${p.b||'—'}</div><div class="addr">${p.a}</div><div class="grp">${p.group}</div>${approx?'<span class="flag">≈ verify on site</span>':(p.c==='med'?'<span class="flag med">unverified address</span>':'')}</div>`;
       row.onmouseenter = () => highlight(p.n, true);
       row.onmouseleave = () => highlight(p.n, false);
