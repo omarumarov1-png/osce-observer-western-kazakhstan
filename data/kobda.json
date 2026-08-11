@@ -4,50 +4,50 @@
     "group": "Село кобда",
     "b": "Средняя школа имени Кобыланды батыра",
     "a": "село Кобда, улица Астана, № 70",
-    "lat": 50.019255,
-    "lng": 55.646314,
-    "c": "med",
-    "note": ""
+    "lat": 50.151439,
+    "lng": 55.673858,
+    "c": "high",
+    "note": "street-level match (settlement anchor corrected): улица Астана, Қобда, Қобда ауданы, Ақтөбе облысы, 031000, Қазақстан"
   },
   {
     "n": 415,
     "group": "Село кобда",
     "b": "Кобдинский районный Дом культуры",
     "a": "село Кобда, улица Абилхайырхана, № 38",
-    "lat": 50.019255,
+    "lat": 50.020333,
     "lng": 55.646314,
-    "c": "med",
-    "note": ""
+    "c": "low",
+    "note": "no reliable street-level match found in any source; scattered near village/city center for visibility"
   },
   {
     "n": 416,
     "group": "Село кобда",
     "b": "Кобдинский многопрофильный колледж",
     "a": "село Кобда, улица Ы.Алтынсарина, № 4",
-    "lat": 50.019255,
-    "lng": 55.646314,
-    "c": "med",
-    "note": ""
+    "lat": 50.142979,
+    "lng": 55.662522,
+    "c": "high",
+    "note": "street-level match (settlement anchor corrected): Алтынсарина улица, Қобда, Қобда ауданы, Ақтөбе облысы, 031000, Қазақстан"
   },
   {
     "n": 417,
     "group": "Село кобда",
     "b": "Кобдинская казахская средняя школа",
     "a": "село Кобда, улица С.Сейфуллина, № 44",
-    "lat": 50.019255,
-    "lng": 55.646314,
-    "c": "med",
-    "note": ""
+    "lat": 50.141887,
+    "lng": 55.666761,
+    "c": "high",
+    "note": "street-level match (settlement anchor corrected): Сакена Сейфуллина улица, Қобда, Қобда ауданы, Ақтөбе облысы, 031000, Қазақстан"
   },
   {
     "n": 418,
     "group": "Село акрап",
     "b": "Акрапского сельского Дома культуры",
     "a": "село Акрап, улица Хан ордасы, № 35",
-    "lat": 50.167641,
+    "lat": 50.168719,
     "lng": 55.781779,
     "c": "low",
-    "note": "NO_MATCH_FALLBACK_CENTROID"
+    "note": "no reliable street-level match found in any source; scattered near village/city center for visibility"
   },
   {
     "n": 419,
@@ -104,10 +104,10 @@
     "group": "Село и.билтабанова",
     "b": "сельского клуба И",
     "a": "село И.Билтабанова, улица Нұр-Сұлтан, № 40",
-    "lat": 50.167641,
-    "lng": 55.781779,
+    "lat": 50.167974,
+    "lng": 55.78338,
     "c": "low",
-    "note": "NO_MATCH_FALLBACK_CENTROID"
+    "note": "no reliable street-level match found in any source; scattered near village/city center for visibility"
   },
   {
     "n": 425,
@@ -144,10 +144,10 @@
     "group": "Село аксай",
     "b": "Аксайская начальная школа",
     "a": "село Аксай, улица Жамбыл, № 17",
-    "lat": 50.167641,
-    "lng": 55.781779,
+    "lat": 50.166769,
+    "lng": 55.782768,
     "c": "low",
-    "note": "NO_MATCH_FALLBACK_CENTROID"
+    "note": "no reliable street-level match found in any source; scattered near village/city center for visibility"
   },
   {
     "n": 430,
@@ -184,10 +184,10 @@
     "group": "Село курсай",
     "b": "Курсайская начальная школа",
     "a": "село Курсай, улица Алии Молдагуловой, № 39",
-    "lat": 50.167641,
-    "lng": 55.781779,
+    "lat": 50.166769,
+    "lng": 55.78079,
     "c": "low",
-    "note": "NO_MATCH_FALLBACK_CENTROID"
+    "note": "no reliable street-level match found in any source; scattered near village/city center for visibility"
   },
   {
     "n": 436,
@@ -234,10 +234,10 @@
     "group": "Село когала",
     "b": "Кобландинская основная школа",
     "a": "село Когала, улица Кобланды батыра, № 15",
-    "lat": 50.167641,
-    "lng": 55.781779,
+    "lat": 50.167974,
+    "lng": 55.780178,
     "c": "low",
-    "note": "NO_MATCH_FALLBACK_CENTROID"
+    "note": "no reliable street-level match found in any source; scattered near village/city center for visibility"
   },
   {
     "n": 442,
