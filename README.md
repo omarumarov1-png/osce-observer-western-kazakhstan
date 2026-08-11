@@ -2,7 +2,7 @@
 
 Interactive map of polling station (УИК) locations across Aktobe and West Kazakhstan oblasts — built to support election observation fieldwork.
 
-**[Open the live map →](#)** *(link added after GitHub Pages deploy)*
+**[Open the live map →](https://omarumarov1-png.github.io/osce-observer-western-kazakhstan/)**
 
 ## What's in it
 
