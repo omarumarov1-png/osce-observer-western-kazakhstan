@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OSCE Observer — Western Kazakhstan</title>
+<meta name="description" content="Интерактивная карта участковых избирательных комиссий (УИК) западных регионов Казахстана — Актюбинская и Западно-Казахстанская области."/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.min.css"/>
+<link rel="stylesheet" href="assets/app.css"/>
+</head>
+<body>
+<div id="root">
+
+  <div id="home">
+    <div class="home-wrap">
+      <div class="home-head">
+        <p class="home-eyebrow">OSCE Observer</p>
+        <h1>Избирательные участки — Западный Казахстан</h1>
+        <p>Интерактивная карта участковых избирательных комиссий (УИК) Актюбинской и Западно-Казахстанской областей. Данные собраны из официальных решений акимов о границах избирательных участков; адреса геокодированы и перепроверены по независимым источникам. Выберите регион, чтобы открыть карту.</p>
+        <div class="home-stats">
+          <div class="stat"><b id="statTotal">—</b><span>участков УИК</span></div>
+          <div class="stat"><b id="statRegions">—</b><span>регионов</span></div>
+          <div class="stat"><b id="statOblasts">—</b><span>областей</span></div>
+        </div>
+      </div>
+      <div id="oblastSections"></div>
+      <div class="home-foot">
+        Координаты получены геокодированием официальных адресов (OpenStreetMap Nominatim, перепроверено через 2ГИС там, где это было возможно). Часть участков в сельской местности привязана на уровне населённого пункта, а не точного здания — такие участки помечены как «≈ приблизительно» и требуют проверки на месте перед использованием в полевой работе наблюдателя.
+      </div>
+    </div>
+  </div>
+
+  <div id="region">
+    <div id="app">
+      <aside id="side">
+        <div id="head">
+          <div class="backrow">
+            <button class="backbtn" onclick="goHome()">← Все регионы</button>
+          </div>
+          <h1>—</h1>
+          <div class="sub" id="head-sub">—</div>
+          <div class="counts">
+            <span class="pill"><b id="cTot">0</b> участков</span>
+            <span class="pill"><b id="cGrp">0</b> округов</span>
+            <span class="pill" title="Приблизительная привязка">≈ <b id="cApx">0</b></span>
+          </div>
+        </div>
+        <div id="controls">
+          <div class="searchwrap">
+            <span class="ic">🔍</span>
+            <input id="q" placeholder="Поиск: № участка, село, округ, улица…" autocomplete="off"/>
+            <button class="clr" id="clr">×</button>
+          </div>
+          <select id="groupSel"><option value="all">Все округа</option></select>
+          <div class="segrow"><span class="seglbl">Точность</span>
+            <span class="seg on" data-c="all">Все</span>
+            <span class="seg" data-c="ok">Подтв.</span>
+            <span class="seg" data-c="approx">≈ проверить</span>
+          </div>
+        </div>
+        <div id="listmeta"><span id="shownCount"></span><span class="sortbtn" id="sortBtn">Сортировка: № ▲</span></div>
+        <div id="list"></div>
+        <div id="empty">Ничего не найдено.</div>
+      </aside>
+      <div id="mapwrap">
+        <div id="map"></div>
+        <div id="loading"><div class="spin"></div><div>Загрузка карты…</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
