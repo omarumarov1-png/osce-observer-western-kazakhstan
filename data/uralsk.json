@@ -47,7 +47,7 @@
     "lat": 51.166487,
     "lng": 51.286068,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; only wrong-number or generic-name false matches found, kept original position"
   },
   {
     "n": 187,
@@ -97,7 +97,7 @@
     "lat": 51.166487,
     "lng": 51.286068,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; only wrong-number or generic-name false matches found, kept original position"
   },
   {
     "n": 227,
@@ -107,7 +107,7 @@
     "lat": 51.255581,
     "lng": 51.443535,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 230,
@@ -137,7 +137,7 @@
     "lat": 51.256283,
     "lng": 51.359887,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; only wrong-number or generic-name false matches found, kept original position"
   },
   {
     "n": 248,
@@ -157,7 +157,7 @@
     "lat": 51.265208,
     "lng": 51.461541,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (54m)"
   },
   {
     "n": 268,
@@ -177,7 +177,7 @@
     "lat": 51.255581,
     "lng": 51.443535,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 276,
@@ -187,7 +187,7 @@
     "lat": 51.264279,
     "lng": 51.458177,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 286,
@@ -207,7 +207,7 @@
     "lat": 51.236473,
     "lng": 51.459683,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 300,
@@ -224,10 +224,10 @@
     "group": "г. Уральск",
     "b": "Дворец школьников",
     "a": "микрорайон Кадыр Мырза Али, дом 18",
-    "lat": 51.250947,
-    "lng": 51.437079,
+    "lat": 51.254672,
+    "lng": 51.429834,
     "c": "high",
-    "note": ""
+    "note": "2GIS exact institution match: Дворец школьников, Отдел образования г. Уральска"
   },
   {
     "n": 311,
@@ -237,7 +237,7 @@
     "lat": 51.238728,
     "lng": 51.381022,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; only wrong-number or generic-name false matches found, kept original position"
   },
   {
     "n": 321,
@@ -297,7 +297,7 @@
     "lat": 51.238467,
     "lng": 51.277663,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 400,
@@ -344,10 +344,10 @@
     "group": "п. Зачаганск",
     "b": "Областная специализированная детско-юношеская школа олимпийского резерва",
     "a": "поселок Зачаганск, улица Бірлік, дом 7А",
-    "lat": 51.183383,
-    "lng": 51.302092,
+    "lat": 51.254757,
+    "lng": 51.431803,
     "c": "high",
-    "note": ""
+    "note": "2GIS exact institution match: Областная специализированная детско-юношеская школа олимпийского резерва по теннису"
   },
   {
     "n": 410,
@@ -367,7 +367,7 @@
     "lat": 51.191653,
     "lng": 51.37703,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (143m)"
   },
   {
     "n": 416,
@@ -577,7 +577,7 @@
     "lat": 51.199875,
     "lng": 51.373315,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (5m)"
   },
   {
     "n": 446,
@@ -587,7 +587,7 @@
     "lat": 51.201204,
     "lng": 51.361963,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 447,
@@ -617,7 +617,7 @@
     "lat": 51.209026,
     "lng": 51.360969,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 450,
@@ -627,7 +627,7 @@
     "lat": 51.21245,
     "lng": 51.362982,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (7m)"
   },
   {
     "n": 451,
@@ -657,7 +657,7 @@
     "lat": 51.264279,
     "lng": 51.458177,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 454,
@@ -677,7 +677,7 @@
     "lat": 51.256283,
     "lng": 51.359887,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; only wrong-number or generic-name false matches found, kept original position"
   },
   {
     "n": 456,
@@ -697,7 +697,7 @@
     "lat": 51.218462,
     "lng": 51.368208,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 458,
@@ -707,7 +707,7 @@
     "lat": 51.21876,
     "lng": 51.369154,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 459,
@@ -747,7 +747,7 @@
     "lat": 51.201603,
     "lng": 51.377642,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 463,
@@ -787,7 +787,7 @@
     "lat": 51.209331,
     "lng": 51.366529,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (462m)"
   },
   {
     "n": 467,
@@ -797,7 +797,7 @@
     "lat": 51.210237,
     "lng": 51.381445,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (7m)"
   },
   {
     "n": 468,
@@ -817,7 +817,7 @@
     "lat": 51.201265,
     "lng": 51.383931,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (105m)"
   },
   {
     "n": 470,
@@ -857,7 +857,7 @@
     "lat": 51.230746,
     "lng": 51.38269,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 474,
@@ -867,7 +867,7 @@
     "lat": 51.191445,
     "lng": 51.375177,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 475,
@@ -887,7 +887,7 @@
     "lat": 51.21876,
     "lng": 51.369154,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 477,
@@ -927,7 +927,7 @@
     "lat": 51.23404,
     "lng": 51.424764,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 481,
@@ -944,10 +944,10 @@
     "group": "г. Уральск",
     "b": "Городское культурно-просветительное объединение",
     "a": "улица Сырым Датова, дом 17",
-    "lat": 51.234379,
-    "lng": 51.434107,
+    "lat": 51.196191,
+    "lng": 51.373865,
     "c": "high",
-    "note": ""
+    "note": "2GIS exact institution match: Городское Культурно-Просветительное Объединение"
   },
   {
     "n": 483,
@@ -957,7 +957,7 @@
     "lat": 51.23201,
     "lng": 51.468228,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 484,
@@ -977,7 +977,7 @@
     "lat": 51.255103,
     "lng": 51.436327,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (42m)"
   },
   {
     "n": 486,
@@ -987,7 +987,7 @@
     "lat": 51.233526,
     "lng": 51.464813,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 487,
@@ -1014,10 +1014,10 @@
     "group": "г. Уральск",
     "b": "Департамент полиции Западно-Казахстанской области Министерство Внутренних дел Республики Казахстан",
     "a": "улица Юрия Гагарина, строение 2/5Н",
-    "lat": 51.23201,
-    "lng": 51.468228,
+    "lat": 51.191041,
+    "lng": 51.38152,
     "c": "high",
-    "note": ""
+    "note": "2GIS exact institution match: Департамент полиции Западно-Казахстанской области"
   },
   {
     "n": 490,
@@ -1037,7 +1037,7 @@
     "lat": 51.242648,
     "lng": 51.452873,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (13m)"
   },
   {
     "n": 492,
@@ -1047,7 +1047,7 @@
     "lat": 51.244544,
     "lng": 51.433471,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 493,
@@ -1067,7 +1067,7 @@
     "lat": 51.251273,
     "lng": 51.385478,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; only wrong-number or generic-name false matches found, kept original position"
   },
   {
     "n": 495,
@@ -1087,7 +1087,7 @@
     "lat": 51.242602,
     "lng": 51.419865,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (78m)"
   },
   {
     "n": 497,
@@ -1097,7 +1097,7 @@
     "lat": 51.241301,
     "lng": 51.423776,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (30m)"
   },
   {
     "n": 498,
@@ -1117,7 +1117,7 @@
     "lat": 51.245738,
     "lng": 51.431345,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; only wrong-number or generic-name false matches found, kept original position"
   },
   {
     "n": 500,
@@ -1207,7 +1207,7 @@
     "lat": 51.243604,
     "lng": 51.401825,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 509,
@@ -1297,7 +1297,7 @@
     "lat": 51.265208,
     "lng": 51.461541,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (54m)"
   },
   {
     "n": 518,
@@ -1337,7 +1337,7 @@
     "lat": 51.240083,
     "lng": 51.361431,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (46m)"
   },
   {
     "n": 522,
@@ -1357,6 +1357,6 @@
     "lat": 51.256216,
     "lng": 51.324968,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (134m)"
   }
 ]

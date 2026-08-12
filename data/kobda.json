@@ -67,27 +67,27 @@
     "lat": 50.231203,
     "lng": 56.208329,
     "c": "med",
-    "note": ""
+    "note": "reviewed against 2GIS; no reliable specific match found (village too small for 2GIS coverage, or only generic/wrong-district overlap), kept original position"
   },
   {
     "n": 421,
     "group": "Село талдысай",
     "b": "Талдысайского сельского клуба",
     "a": "село Талдысай, улица Абат-Байтака, № 40",
-    "lat": 49.808071,
-    "lng": 57.260864,
+    "lat": 50.202847,
+    "lng": 55.96468,
     "c": "med",
-    "note": ""
+    "note": "Талдысай village (Kobda district) — was 115km off, collided with same-named villages in 3 other districts"
   },
   {
     "n": 422,
     "group": "Село булак",
     "b": "Булакского сельского клуба",
     "a": "село Булак, улица Алии Молдагуловой, № 5",
-    "lat": 49.180401,
-    "lng": 58.41913,
+    "lat": 50.096264,
+    "lng": 56.115379,
     "c": "med",
-    "note": ""
+    "note": "Бұлақ village (Kobda district) — was 221km off, wrong-district collision"
   },
   {
     "n": 423,
@@ -97,7 +97,7 @@
     "lat": 50.324696,
     "lng": 56.019753,
     "c": "med",
-    "note": ""
+    "note": "reviewed against 2GIS; no reliable specific match found (village too small for 2GIS coverage, or only generic/wrong-district overlap), kept original position"
   },
   {
     "n": 424,
@@ -117,7 +117,7 @@
     "lat": 50.10553,
     "lng": 55.778421,
     "c": "med",
-    "note": ""
+    "note": "reviewed against 2GIS; no reliable specific match found (village too small for 2GIS coverage, or only generic/wrong-district overlap), kept original position"
   },
   {
     "n": 426,
@@ -137,7 +137,7 @@
     "lat": 50.372716,
     "lng": 55.657633,
     "c": "med",
-    "note": ""
+    "note": "reviewed against 2GIS; no reliable specific match found (village too small for 2GIS coverage, or only generic/wrong-district overlap), kept original position"
   },
   {
     "n": 428,
@@ -167,17 +167,17 @@
     "lat": 50.351526,
     "lng": 55.82878,
     "c": "med",
-    "note": ""
+    "note": "reviewed against 2GIS; no reliable specific match found (village too small for 2GIS coverage, or only generic/wrong-district overlap), kept original position"
   },
   {
     "n": 434,
     "group": "Село жиренкопа",
     "b": "Жиренкопинского сельского клуба",
     "a": "село Жиренкопа, улица Ардагер, № 12",
-    "lat": 50.84653,
-    "lng": 54.833772,
+    "lat": 50.8465298,
+    "lng": 54.8337722,
     "c": "high",
-    "note": "confirmed by Yandex Maps (250m)"
+    "note": "Жиренқопа village (Kobda district) — was 101km off, wrong-district collision"
   },
   {
     "n": 435,
@@ -194,20 +194,20 @@
     "group": "Село кызылжар",
     "b": "Кызылжарского сельского клуба",
     "a": "село Кызылжар, улица Әлкей Марғұлан, № 1",
-    "lat": 50.900494,
-    "lng": 57.106127,
+    "lat": 50.6958315,
+    "lng": 55.0142233,
     "c": "med",
-    "note": ""
+    "note": "Қызылжар village (Kobda district) — was 127km off, collided with same-named villages in 4 other districts"
   },
   {
     "n": 437,
     "group": "Село каракемер",
     "b": "Каракемерская основная школа",
     "a": "село Каракемер, улица Тауелсиздик, № 41",
-    "lat": 49.189165,
-    "lng": 54.530833,
+    "lat": 50.754269,
+    "lng": 54.950699,
     "c": "med",
-    "note": ""
+    "note": "Қаракемер village (Kobda district) — was 140km off, collided with same-named village in Ойыл district"
   },
   {
     "n": 438,
@@ -217,17 +217,17 @@
     "lat": 49.855434,
     "lng": 55.745514,
     "c": "med",
-    "note": ""
+    "note": "reviewed against 2GIS; no reliable specific match found (village too small for 2GIS coverage, or only generic/wrong-district overlap), kept original position"
   },
   {
     "n": 439,
     "group": "Село кок уй",
     "b": "Кок уйского медицинского пункта",
     "a": "село Кок уй, улица Сейфуллина, № 13",
-    "lat": 50.957289,
-    "lng": 54.59848,
+    "lat": 50.9566712,
+    "lng": 54.6028921,
     "c": "high",
-    "note": "Google + Yandex corroborated match (317m from prior position)"
+    "note": "Көк үй village (Kobda district) — was 121km off, wrong-district collision"
   },
   {
     "n": 441,
@@ -257,7 +257,7 @@
     "lat": 49.812497,
     "lng": 55.115568,
     "c": "med",
-    "note": ""
+    "note": "reviewed against 2GIS; no reliable specific match found (village too small for 2GIS coverage, or only generic/wrong-district overlap), kept original position"
   },
   {
     "n": 444,
@@ -267,7 +267,7 @@
     "lat": 49.828876,
     "lng": 55.227479,
     "c": "med",
-    "note": ""
+    "note": "reviewed against 2GIS; no reliable specific match found (village too small for 2GIS coverage, or only generic/wrong-district overlap), kept original position"
   },
   {
     "n": 445,

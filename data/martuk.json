@@ -54,10 +54,10 @@
     "group": "Мартукский",
     "b": "Кумсайская начальная школа",
     "a": "Мартукский сельский округ, село Кумсай, улица Курылысшылар, № 57",
-    "lat": 49.48964,
-    "lng": 58.512234,
+    "lat": 50.7014524,
+    "lng": 56.6112292,
     "c": "med",
-    "note": ""
+    "note": "Құмсай village (Martuk district) — was ~150km off, wrong-village collision"
   },
   {
     "n": 272,
@@ -107,7 +107,7 @@
     "lat": 50.912064,
     "lng": 56.402393,
     "c": "med",
-    "note": ""
+    "note": "reviewed against 2GIS; no reliable specific match found (village too small for 2GIS coverage, or only generic/wrong-district overlap), kept original position"
   },
   {
     "n": 279,
@@ -147,7 +147,7 @@
     "lat": 50.513338,
     "lng": 56.101835,
     "c": "med",
-    "note": ""
+    "note": "reviewed against 2GIS; no reliable specific match found (village too small for 2GIS coverage, or only generic/wrong-district overlap), kept original position"
   },
   {
     "n": 284,
@@ -217,7 +217,7 @@
     "lat": 50.642327,
     "lng": 56.697618,
     "c": "med",
-    "note": ""
+    "note": "reviewed against 2GIS; no reliable specific match found (village too small for 2GIS coverage, or only generic/wrong-district overlap), kept original position"
   },
   {
     "n": 292,
@@ -237,7 +237,7 @@
     "lat": 50.621826,
     "lng": 56.820641,
     "c": "med",
-    "note": ""
+    "note": "reviewed against 2GIS; no reliable specific match found (village too small for 2GIS coverage, or only generic/wrong-district overlap), kept original position"
   },
   {
     "n": 294,
@@ -267,7 +267,7 @@
     "lat": 50.900494,
     "lng": 57.106127,
     "c": "med",
-    "note": ""
+    "note": "reviewed against 2GIS; no reliable specific match found (village too small for 2GIS coverage, or only generic/wrong-district overlap), kept original position"
   },
   {
     "n": 297,
@@ -277,7 +277,7 @@
     "lat": 50.894836,
     "lng": 56.945484,
     "c": "med",
-    "note": ""
+    "note": "reviewed against 2GIS; no reliable specific match found (village too small for 2GIS coverage, or only generic/wrong-district overlap), kept original position"
   },
   {
     "n": 298,
@@ -297,7 +297,7 @@
     "lat": 50.418718,
     "lng": 56.485162,
     "c": "med",
-    "note": ""
+    "note": "reviewed against 2GIS; no reliable specific match found (village too small for 2GIS coverage, or only generic/wrong-district overlap), kept original position"
   },
   {
     "n": 302,

@@ -7,7 +7,7 @@
     "lat": 50.300166,
     "lng": 57.216333,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (90m)"
   },
   {
     "n": 2,
@@ -17,7 +17,7 @@
     "lat": 50.300166,
     "lng": 57.216333,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (90m)"
   },
   {
     "n": 3,
@@ -27,7 +27,7 @@
     "lat": 50.29212,
     "lng": 57.201929,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (6m)"
   },
   {
     "n": 4,
@@ -37,7 +37,7 @@
     "lat": 50.292289,
     "lng": 57.21278,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (67m)"
   },
   {
     "n": 5,
@@ -47,7 +47,7 @@
     "lat": 50.292289,
     "lng": 57.21278,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (67m)"
   },
   {
     "n": 6,
@@ -57,7 +57,7 @@
     "lat": 50.290171,
     "lng": 57.215675,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; only same-institution-type false matches found (wrong department/branch/number), kept original position"
   },
   {
     "n": 7,
@@ -67,7 +67,7 @@
     "lat": 50.284125,
     "lng": 57.228211,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; only same-institution-type false matches found (wrong department/branch/number), kept original position"
   },
   {
     "n": 8,
@@ -77,7 +77,7 @@
     "lat": 50.284719,
     "lng": 57.221394,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (7m)"
   },
   {
     "n": 9,
@@ -87,17 +87,17 @@
     "lat": 50.285245,
     "lng": 57.224271,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (99m)"
   },
   {
     "n": 10,
     "group": "район Алматы",
     "b": "Общеобразовательная средняя школа №62 имени Бауыржана Момышулы",
     "a": "район Алматы,улица Шокана Уалиханова, 12",
-    "lat": 50.277167,
-    "lng": 57.247876,
+    "lat": 50.281455,
+    "lng": 57.228013,
     "c": "high",
-    "note": ""
+    "note": "Общеобразовательная средняя школа №62 им. Б. Момышулы (2GIS exact-name match, was 1.5km off)"
   },
   {
     "n": 11,
@@ -107,7 +107,7 @@
     "lat": 50.282319,
     "lng": 57.231227,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (36m)"
   },
   {
     "n": 12,
@@ -117,7 +117,7 @@
     "lat": 50.277559,
     "lng": 57.221435,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (21m)"
   },
   {
     "n": 13,
@@ -127,7 +127,7 @@
     "lat": 50.280175,
     "lng": 57.224976,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (20m)"
   },
   {
     "n": 14,
@@ -156,8 +156,8 @@
     "a": "район Алматы,улица Н.В.Гоголя, 12",
     "lat": 50.264309,
     "lng": 57.233187,
-    "c": "med",
-    "note": ""
+    "c": "high",
+    "note": "confirmed by 2GIS institution match (61m)"
   },
   {
     "n": 17,
@@ -167,7 +167,7 @@
     "lat": 50.255499,
     "lng": 57.245792,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 18,
@@ -177,7 +177,7 @@
     "lat": 50.255499,
     "lng": 57.245792,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 19,
@@ -187,7 +187,7 @@
     "lat": 50.260317,
     "lng": 57.223616,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (6m)"
   },
   {
     "n": 20,
@@ -197,7 +197,7 @@
     "lat": 50.211268,
     "lng": 57.28456,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (24m)"
   },
   {
     "n": 21,
@@ -207,7 +207,7 @@
     "lat": 50.266765,
     "lng": 57.211121,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (23m)"
   },
   {
     "n": 22,
@@ -217,7 +217,7 @@
     "lat": 50.268366,
     "lng": 57.218476,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (233m)"
   },
   {
     "n": 23,
@@ -237,7 +237,7 @@
     "lat": 50.273221,
     "lng": 57.210268,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; only same-institution-type false matches found (wrong department/branch/number), kept original position"
   },
   {
     "n": 25,
@@ -247,7 +247,7 @@
     "lat": 50.272983,
     "lng": 57.219673,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 26,
@@ -257,7 +257,7 @@
     "lat": 50.278006,
     "lng": 57.214507,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (109m)"
   },
   {
     "n": 27,
@@ -267,7 +267,7 @@
     "lat": 50.285346,
     "lng": 57.199338,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (23m)"
   },
   {
     "n": 28,
@@ -277,7 +277,7 @@
     "lat": 50.282773,
     "lng": 57.198265,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (35m)"
   },
   {
     "n": 29,
@@ -287,7 +287,7 @@
     "lat": 50.282563,
     "lng": 57.195865,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (42m)"
   },
   {
     "n": 30,
@@ -297,7 +297,7 @@
     "lat": 50.313703,
     "lng": 57.24278,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (3m)"
   },
   {
     "n": 31,
@@ -307,7 +307,7 @@
     "lat": 50.313969,
     "lng": 57.128016,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (16m)"
   },
   {
     "n": 32,
@@ -317,7 +317,7 @@
     "lat": 50.313969,
     "lng": 57.128016,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (16m)"
   },
   {
     "n": 33,
@@ -327,7 +327,7 @@
     "lat": 50.314238,
     "lng": 57.135857,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (12m)"
   },
   {
     "n": 34,
@@ -337,7 +337,7 @@
     "lat": 50.314238,
     "lng": 57.135857,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (12m)"
   },
   {
     "n": 35,
@@ -347,7 +347,7 @@
     "lat": 50.319816,
     "lng": 57.139941,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (52m)"
   },
   {
     "n": 36,
@@ -357,7 +357,7 @@
     "lat": 50.318383,
     "lng": 57.147381,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (5m)"
   },
   {
     "n": 37,
@@ -367,17 +367,17 @@
     "lat": 50.316674,
     "lng": 57.153144,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (28m)"
   },
   {
     "n": 38,
     "group": "район Астана",
     "b": "Областной центр народного творчества",
     "a": "район Астана,проспект Мира, 14А",
-    "lat": 50.286059,
-    "lng": 57.223953,
+    "lat": 50.317334,
+    "lng": 57.142332,
     "c": "high",
-    "note": ""
+    "note": "2GIS + Nominatim corroborated match: Областной центр народного творчества (was (50.286059, 57.223953), ~3.9km off)"
   },
   {
     "n": 39,
@@ -387,7 +387,7 @@
     "lat": 50.306322,
     "lng": 57.144469,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (48m)"
   },
   {
     "n": 40,
@@ -397,7 +397,7 @@
     "lat": 50.275887,
     "lng": 57.191024,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (64m)"
   },
   {
     "n": 41,
@@ -407,7 +407,7 @@
     "lat": 50.312607,
     "lng": 57.145016,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (46m)"
   },
   {
     "n": 42,
@@ -427,7 +427,7 @@
     "lat": 50.309355,
     "lng": 57.148436,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (40m)"
   },
   {
     "n": 44,
@@ -437,7 +437,7 @@
     "lat": 50.306069,
     "lng": 57.160959,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (14m)"
   },
   {
     "n": 45,
@@ -447,7 +447,7 @@
     "lat": 50.305461,
     "lng": 57.158772,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 46,
@@ -457,7 +457,7 @@
     "lat": 50.306069,
     "lng": 57.160959,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (14m)"
   },
   {
     "n": 47,
@@ -467,7 +467,7 @@
     "lat": 50.304025,
     "lng": 57.15787,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (33m)"
   },
   {
     "n": 48,
@@ -477,7 +477,7 @@
     "lat": 50.30403,
     "lng": 57.153926,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (28m)"
   },
   {
     "n": 49,
@@ -487,7 +487,7 @@
     "lat": 50.30267,
     "lng": 57.150042,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (5m)"
   },
   {
     "n": 50,
@@ -497,7 +497,7 @@
     "lat": 50.30267,
     "lng": 57.150042,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (5m)"
   },
   {
     "n": 51,
@@ -507,7 +507,7 @@
     "lat": 50.306322,
     "lng": 57.144469,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (48m)"
   },
   {
     "n": 52,
@@ -527,7 +527,7 @@
     "lat": 50.288887,
     "lng": 57.150145,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (10m)"
   },
   {
     "n": 54,
@@ -537,7 +537,7 @@
     "lat": 50.290718,
     "lng": 57.146956,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (3m)"
   },
   {
     "n": 55,
@@ -547,7 +547,7 @@
     "lat": 50.289168,
     "lng": 57.15355,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (60m)"
   },
   {
     "n": 56,
@@ -557,7 +557,7 @@
     "lat": 50.298537,
     "lng": 57.150392,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (48m)"
   },
   {
     "n": 57,
@@ -567,7 +567,7 @@
     "lat": 50.296286,
     "lng": 57.161457,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (20m)"
   },
   {
     "n": 58,
@@ -577,7 +577,7 @@
     "lat": 50.29474,
     "lng": 57.163652,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (23m)"
   },
   {
     "n": 59,
@@ -587,7 +587,7 @@
     "lat": 50.29474,
     "lng": 57.163652,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (23m)"
   },
   {
     "n": 60,
@@ -597,7 +597,7 @@
     "lat": 50.29779,
     "lng": 57.165915,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (19m)"
   },
   {
     "n": 61,
@@ -607,7 +607,7 @@
     "lat": 50.29779,
     "lng": 57.165915,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (19m)"
   },
   {
     "n": 62,
@@ -637,7 +637,7 @@
     "lat": 50.290457,
     "lng": 57.179197,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (17m)"
   },
   {
     "n": 65,
@@ -647,7 +647,7 @@
     "lat": 50.27644,
     "lng": 57.172525,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; only same-institution-type false matches found (wrong department/branch/number), kept original position"
   },
   {
     "n": 66,
@@ -657,7 +657,7 @@
     "lat": 50.289405,
     "lng": 57.171222,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (36m)"
   },
   {
     "n": 67,
@@ -667,7 +667,7 @@
     "lat": 50.290457,
     "lng": 57.179197,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (17m)"
   },
   {
     "n": 68,
@@ -677,7 +677,7 @@
     "lat": 50.285109,
     "lng": 57.169946,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (17m)"
   },
   {
     "n": 69,
@@ -687,7 +687,7 @@
     "lat": 50.28563,
     "lng": 57.16768,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 70,
@@ -697,7 +697,7 @@
     "lat": 50.28683,
     "lng": 57.160986,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (7m)"
   },
   {
     "n": 71,
@@ -707,7 +707,7 @@
     "lat": 50.286809,
     "lng": 57.159365,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (21m)"
   },
   {
     "n": 72,
@@ -717,7 +717,7 @@
     "lat": 50.282055,
     "lng": 57.159154,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (5m)"
   },
   {
     "n": 73,
@@ -727,17 +727,17 @@
     "lat": 50.282055,
     "lng": 57.159154,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (5m)"
   },
   {
     "n": 74,
     "group": "район Алматы",
     "b": "Управление полиции города Актобе ДП Актюбинской области МВД РК",
     "a": "район Алматы, улица Нагима Кобландина, 25",
-    "lat": 50.282807,
-    "lng": 57.222565,
+    "lat": 50.292781,
+    "lng": 57.128899,
     "c": "med",
-    "note": ""
+    "note": "Управление полиции г. Актобе (2GIS direct match, was 6.1km off)"
   },
   {
     "n": 75,
@@ -747,7 +747,7 @@
     "lat": 50.279466,
     "lng": 57.166068,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (96m)"
   },
   {
     "n": 76,
@@ -757,7 +757,7 @@
     "lat": 50.302075,
     "lng": 57.173498,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; only same-institution-type false matches found (wrong department/branch/number), kept original position"
   },
   {
     "n": 77,
@@ -767,7 +767,7 @@
     "lat": 50.295172,
     "lng": 57.157385,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (13m)"
   },
   {
     "n": 78,
@@ -777,7 +777,7 @@
     "lat": 50.285385,
     "lng": 57.276762,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (25m)"
   },
   {
     "n": 79,
@@ -797,7 +797,7 @@
     "lat": 50.293851,
     "lng": 57.113811,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (34m)"
   },
   {
     "n": 81,
@@ -807,7 +807,7 @@
     "lat": 50.287745,
     "lng": 57.227266,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (11m)"
   },
   {
     "n": 82,
@@ -817,7 +817,7 @@
     "lat": 50.270579,
     "lng": 57.211123,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (143m)"
   },
   {
     "n": 83,
@@ -827,7 +827,7 @@
     "lat": 50.315467,
     "lng": 57.140514,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (39m)"
   },
   {
     "n": 84,
@@ -837,7 +837,7 @@
     "lat": 50.29869,
     "lng": 57.147403,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (32m)"
   },
   {
     "n": 85,
@@ -847,7 +847,7 @@
     "lat": 50.286305,
     "lng": 57.053223,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (85m)"
   },
   {
     "n": 86,
@@ -867,7 +867,7 @@
     "lat": 50.312678,
     "lng": 57.151181,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 88,
@@ -877,7 +877,7 @@
     "lat": 50.282053,
     "lng": 57.060605,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (66m)"
   },
   {
     "n": 89,
@@ -907,7 +907,7 @@
     "lat": 50.385209,
     "lng": 57.405919,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (66m)"
   },
   {
     "n": 92,
@@ -934,10 +934,10 @@
     "group": "район Алматы",
     "b": "Актюбинский Высший сельскохозяйственный колледж имени Шыганака Берсиева",
     "a": "район Алматы, жилой массив Кенеса Нокина, улица Көкшетау, 2",
-    "lat": 50.304056,
-    "lng": 57.227182,
+    "lat": 50.362187,
+    "lng": 57.40247,
     "c": "high",
-    "note": ""
+    "note": "Актюбинский высший сельскохозяйственный колледж (2GIS direct match, was 14km off)"
   },
   {
     "n": 95,
@@ -947,7 +947,7 @@
     "lat": 50.365547,
     "lng": 57.393963,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (28m)"
   },
   {
     "n": 96,
@@ -957,27 +957,27 @@
     "lat": 50.320848,
     "lng": 57.392659,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 97,
     "group": "район Алматы",
     "b": "Общеобразовательная средняя школа №76",
     "a": "район Алматы, жилой массив Беккул Баба, 79Б",
-    "lat": 50.288872,
-    "lng": 57.178134,
+    "lat": 50.310613,
+    "lng": 57.566492,
     "c": "high",
-    "note": ""
+    "note": "2GIS Школа №76 match, corroborated by Nominatim Бекқұл баба location (was (50.288872, 57.178134), ~28km off)"
   },
   {
     "n": 98,
     "group": "район Алматы",
     "b": "Белогорская основная школа",
     "a": "район Алматы, жилой массив Белогорка, улица Жауказын, 11",
-    "lat": 50.245,
-    "lng": 57.205,
-    "c": "low",
-    "note": "ж/м Белогорка (approx)"
+    "lat": 50.362785,
+    "lng": 57.638946,
+    "c": "high",
+    "note": "2GIS direct institution match, corroborated by area search (was (50.245, 57.205), rough manual guess, ~35km off)"
   },
   {
     "n": 99,
@@ -987,7 +987,7 @@
     "lat": 50.339283,
     "lng": 57.293252,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (27m)"
   },
   {
     "n": 100,
@@ -997,7 +997,7 @@
     "lat": 50.32416,
     "lng": 57.331074,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (33m)"
   },
   {
     "n": 101,
@@ -1007,7 +1007,7 @@
     "lat": 50.317248,
     "lng": 57.313176,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (60m)"
   },
   {
     "n": 103,
@@ -1027,7 +1027,7 @@
     "lat": 50.274456,
     "lng": 56.965953,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (7m)"
   },
   {
     "n": 105,
@@ -1037,17 +1037,17 @@
     "lat": 50.290036,
     "lng": 57.066128,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; only same-institution-type false matches found (wrong department/branch/number), kept original position"
   },
   {
     "n": 106,
     "group": "район Алматы",
     "b": "Средняя общеобразовательная школа №59 города Актобе",
     "a": "район Алматы, жилой массив Георгиевка, 105",
-    "lat": 50.272573,
-    "lng": 57.174662,
-    "c": "med",
-    "note": ""
+    "lat": 50.454186,
+    "lng": 57.031512,
+    "c": "high",
+    "note": "2GIS direct institution match: Средняя школа №59 (previous coordinate was ~22km off, in the wrong neighborhood)"
   },
   {
     "n": 107,
@@ -1057,7 +1057,7 @@
     "lat": 50.353409,
     "lng": 57.177046,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 108,
@@ -1067,7 +1067,7 @@
     "lat": 50.286739,
     "lng": 57.120377,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 109,
@@ -1077,7 +1077,7 @@
     "lat": 50.290587,
     "lng": 57.198655,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (3m)"
   },
   {
     "n": 110,
@@ -1087,7 +1087,7 @@
     "lat": 50.282773,
     "lng": 57.198265,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (35m)"
   },
   {
     "n": 111,
@@ -1097,7 +1097,7 @@
     "lat": 50.281409,
     "lng": 57.197217,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (18m)"
   },
   {
     "n": 112,
@@ -1107,7 +1107,7 @@
     "lat": 50.275887,
     "lng": 57.191024,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (64m)"
   },
   {
     "n": 113,
@@ -1117,7 +1117,7 @@
     "lat": 50.292594,
     "lng": 57.262847,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (17m)"
   },
   {
     "n": 114,
@@ -1137,7 +1137,7 @@
     "lat": 50.260317,
     "lng": 57.223616,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (6m)"
   },
   {
     "n": 116,
@@ -1147,7 +1147,7 @@
     "lat": 50.286386,
     "lng": 57.163321,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (19m)"
   },
   {
     "n": 117,
@@ -1157,7 +1157,7 @@
     "lat": 50.303759,
     "lng": 57.302217,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (106m)"
   },
   {
     "n": 118,
@@ -1187,7 +1187,7 @@
     "lat": 50.275189,
     "lng": 57.18947,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (29m)"
   },
   {
     "n": 121,
@@ -1207,7 +1207,7 @@
     "lat": 50.287297,
     "lng": 57.274093,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 123,
@@ -1224,10 +1224,10 @@
     "group": "район Алматы",
     "b": "Ясли-сад №30 «Ұрпақ",
     "a": "район Алматы, улица Т.Н.Шевченко, 34",
-    "lat": 50.255531,
-    "lng": 57.2429,
+    "lat": 50.293133,
+    "lng": 57.161923,
     "c": "high",
-    "note": ""
+    "note": "Urpaq/Ұрпақ ясли-сад (2GIS direct name match, was 7.1km off)"
   },
   {
     "n": 125,
@@ -1247,7 +1247,7 @@
     "lat": 50.323225,
     "lng": 57.338282,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (27m)"
   },
   {
     "n": 523,
@@ -1267,7 +1267,7 @@
     "lat": 50.293379,
     "lng": 57.280244,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (4m)"
   },
   {
     "n": 525,
@@ -1277,7 +1277,7 @@
     "lat": 50.286693,
     "lng": 57.240683,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (27m)"
   },
   {
     "n": 526,
@@ -1287,7 +1287,7 @@
     "lat": 50.275189,
     "lng": 57.18947,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (29m)"
   },
   {
     "n": 527,
@@ -1297,7 +1297,7 @@
     "lat": 50.277945,
     "lng": 57.13249,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; only same-institution-type false matches found (wrong department/branch/number), kept original position"
   },
   {
     "n": 528,
@@ -1307,7 +1307,7 @@
     "lat": 50.286739,
     "lng": 57.120377,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 529,
@@ -1317,7 +1317,7 @@
     "lat": 50.316644,
     "lng": 57.321749,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (46m)"
   },
   {
     "n": 530,
@@ -1327,7 +1327,7 @@
     "lat": 50.320848,
     "lng": 57.392659,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 531,
@@ -1357,7 +1357,7 @@
     "lat": 50.338271,
     "lng": 57.279406,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (6m)"
   },
   {
     "n": 534,
@@ -1367,7 +1367,7 @@
     "lat": 50.313703,
     "lng": 57.24278,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (3m)"
   },
   {
     "n": 535,
@@ -1377,7 +1377,7 @@
     "lat": 50.283959,
     "lng": 57.299157,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (48m)"
   },
   {
     "n": 536,
@@ -1387,7 +1387,7 @@
     "lat": 50.283959,
     "lng": 57.299157,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (48m)"
   },
   {
     "n": 537,
@@ -1397,7 +1397,7 @@
     "lat": 50.300291,
     "lng": 57.203513,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (58m)"
   },
   {
     "n": 538,
@@ -1407,7 +1407,7 @@
     "lat": 50.259424,
     "lng": 57.250783,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (13m)"
   },
   {
     "n": 539,
@@ -1417,7 +1417,7 @@
     "lat": 50.265775,
     "lng": 57.196098,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (59m)"
   },
   {
     "n": 540,
@@ -1427,7 +1427,7 @@
     "lat": 50.281767,
     "lng": 57.151921,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 541,
@@ -1437,7 +1437,7 @@
     "lat": 50.280006,
     "lng": 57.137713,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (50m)"
   },
   {
     "n": 542,
@@ -1447,7 +1447,7 @@
     "lat": 50.27438,
     "lng": 57.140876,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (62m)"
   },
   {
     "n": 543,
@@ -1457,7 +1457,7 @@
     "lat": 50.27438,
     "lng": 57.140876,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (62m)"
   },
   {
     "n": 544,
@@ -1467,7 +1467,7 @@
     "lat": 50.319139,
     "lng": 57.14268,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (22m)"
   },
   {
     "n": 545,
@@ -1477,7 +1477,7 @@
     "lat": 50.289711,
     "lng": 57.085661,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (35m)"
   },
   {
     "n": 546,
@@ -1487,7 +1487,7 @@
     "lat": 50.175135,
     "lng": 57.063819,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 548,
@@ -1497,7 +1497,7 @@
     "lat": 50.320088,
     "lng": 57.366534,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (21m)"
   },
   {
     "n": 549,
@@ -1517,7 +1517,7 @@
     "lat": 50.316563,
     "lng": 57.332718,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 551,
@@ -1527,7 +1527,7 @@
     "lat": 50.286693,
     "lng": 57.240683,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (27m)"
   },
   {
     "n": 552,
@@ -1537,7 +1537,7 @@
     "lat": 50.259424,
     "lng": 57.250783,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (13m)"
   },
   {
     "n": 553,
@@ -1547,7 +1547,7 @@
     "lat": 50.253206,
     "lng": 57.22085,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (19m)"
   },
   {
     "n": 554,
@@ -1577,7 +1577,7 @@
     "lat": 50.280006,
     "lng": 57.137713,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (50m)"
   },
   {
     "n": 557,
@@ -1587,7 +1587,7 @@
     "lat": 50.278869,
     "lng": 57.132621,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (3m)"
   },
   {
     "n": 558,
@@ -1597,7 +1597,7 @@
     "lat": 50.292674,
     "lng": 57.149947,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (10m)"
   },
   {
     "n": 559,
@@ -1617,7 +1617,7 @@
     "lat": 50.350478,
     "lng": 57.37785,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (39m)"
   },
   {
     "n": 562,
@@ -1627,7 +1627,7 @@
     "lat": 50.320088,
     "lng": 57.366534,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (21m)"
   },
   {
     "n": 563,
@@ -1637,7 +1637,7 @@
     "lat": 50.316563,
     "lng": 57.332718,
     "c": "high",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 564,
@@ -1657,7 +1657,7 @@
     "lat": 50.276614,
     "lng": 57.169781,
     "c": "high",
-    "note": ""
+    "note": "confirmed by 2GIS institution match (47m)"
   },
   {
     "n": 566,
@@ -1667,7 +1667,7 @@
     "lat": 50.268085,
     "lng": 57.137594,
     "c": "med",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   },
   {
     "n": 567,
@@ -1677,6 +1677,6 @@
     "lat": 50.268085,
     "lng": 57.137594,
     "c": "med",
-    "note": ""
+    "note": "reviewed against 2GIS; no institution match found in the correct area, kept original position"
   }
 ]

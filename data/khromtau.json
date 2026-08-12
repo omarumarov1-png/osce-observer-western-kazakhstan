@@ -27,7 +27,7 @@
     "lat": 50.447233,
     "lng": 58.002474,
     "c": "med",
-    "note": ""
+    "note": "reviewed against 2GIS; no reliable specific match found (village too small for 2GIS coverage, or only generic/wrong-district overlap), kept original position"
   },
   {
     "n": 454,
@@ -77,27 +77,27 @@
     "lat": 50.40323,
     "lng": 59.612982,
     "c": "med",
-    "note": ""
+    "note": "reviewed against 2GIS; no reliable specific match found (village too small for 2GIS coverage, or only generic/wrong-district overlap), kept original position"
   },
   {
     "n": 460,
     "group": "Село копа",
     "b": "Копинский сельский Дом культуры",
     "a": "село Копа, улица М.Маметовой, № 22",
-    "lat": 49.217659,
-    "lng": 56.638691,
+    "lat": 49.9347032,
+    "lng": 59.0030883,
     "c": "med",
-    "note": ""
+    "note": "Қопа village (Khromtau district) — was ~250km off, wrong-village collision"
   },
   {
     "n": 461,
     "group": "Село тамды",
     "b": "Сатпаевская средняя школа",
     "a": "село Тамды, улица Ардагерлер, № 1",
-    "lat": 49.817894,
-    "lng": 57.345936,
+    "lat": 49.9305537,
+    "lng": 59.038027,
     "c": "med",
-    "note": ""
+    "note": "Тамды village (Khromtau district) — was ~120km off, wrong-village collision"
   },
   {
     "n": 462,
@@ -117,7 +117,7 @@
     "lat": 50.476139,
     "lng": 59.081547,
     "c": "med",
-    "note": ""
+    "note": "reviewed against 2GIS; no reliable specific match found (village too small for 2GIS coverage, or only generic/wrong-district overlap), kept original position"
   },
   {
     "n": 465,
@@ -127,7 +127,7 @@
     "lat": 50.614881,
     "lng": 58.988916,
     "c": "med",
-    "note": ""
+    "note": "reviewed against 2GIS; no reliable specific match found (village too small for 2GIS coverage, or only generic/wrong-district overlap), kept original position"
   },
   {
     "n": 467,
@@ -154,10 +154,10 @@
     "group": "Село дон",
     "b": "Донская школа-гимназия",
     "a": "село Дон, улица Бейбитшилик, № 50",
-    "lat": 50.256401,
-    "lng": 58.498962,
+    "lat": 50.263355,
+    "lng": 58.503293,
     "c": "med",
-    "note": ""
+    "note": "2GIS exact institution match: Донская школа-гимназия"
   },
   {
     "n": 474,
