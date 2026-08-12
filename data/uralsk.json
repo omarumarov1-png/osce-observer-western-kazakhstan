@@ -1304,10 +1304,10 @@
     "group": "г. Уральск",
     "b": "Основная общеобразовательная школа № 29",
     "a": "микрорайон Ветелки, улица Центральная, дом 7",
-    "lat": 51.369746,
-    "lng": 51.177583,
-    "c": "high",
-    "note": "2GIS institution match: Средняя школа №29"
+    "lat": 51.24395,
+    "lng": 51.43174,
+    "c": "med",
+    "note": "Reverted a wrong 2GIS match (matched Средняя школа №29, a different school than the source Основная школа №29); repositioned near мкр Ветелки using Google area search + clustering with adjacent Северо-Восток-2/Строитель microdistricts (was at (51.369746, 51.177583), 11km away in the wrong part of the city)"
   },
   {
     "n": 519,
