@@ -22,9 +22,9 @@
     ],
     "groupCount": 2,
     "conf": {
-      "high": 145,
-      "med": 7,
-      "low": 16
+      "high": 148,
+      "med": 6,
+      "low": 14
     }
   },
   {
@@ -35,8 +35,8 @@
     "file": "uralsk.json",
     "count": 136,
     "center": [
-      51.2197,
-      51.3738
+      51.2198,
+      51.3739
     ],
     "bounds": [
       [
@@ -50,8 +50,8 @@
     ],
     "groupCount": 5,
     "conf": {
-      "high": 92,
-      "med": 44
+      "high": 124,
+      "med": 12
     }
   },
   {
@@ -63,7 +63,7 @@
     "count": 45,
     "center": [
       49.8416,
-      51.3389
+      51.3386
     ],
     "bounds": [
       [
@@ -77,8 +77,8 @@
     ],
     "groupCount": 18,
     "conf": {
-      "med": 41,
-      "high": 4
+      "high": 32,
+      "med": 13
     }
   },
   {
@@ -89,8 +89,8 @@
     "file": "aksai.json",
     "count": 33,
     "center": [
-      51.2119,
-      53.0092
+      51.2118,
+      53.0093
     ],
     "bounds": [
       [
@@ -104,8 +104,8 @@
     ],
     "groupCount": 20,
     "conf": {
-      "med": 26,
-      "high": 2,
+      "med": 17,
+      "high": 11,
       "low": 5
     }
   },
@@ -117,8 +117,8 @@
     "file": "khromtau.json",
     "count": 27,
     "center": [
-      50.2501,
-      58.4551
+      50.2503,
+      58.4552
     ],
     "bounds": [
       [
@@ -132,9 +132,9 @@
     ],
     "groupCount": 18,
     "conf": {
-      "med": 21,
-      "low": 2,
-      "high": 4
+      "high": 17,
+      "med": 8,
+      "low": 2
     }
   },
   {
@@ -145,8 +145,8 @@
     "file": "martuk.json",
     "count": 32,
     "center": [
-      50.6982,
-      56.6959
+      50.698,
+      56.696
     ],
     "bounds": [
       [
@@ -160,8 +160,8 @@
     ],
     "groupCount": 14,
     "conf": {
-      "high": 5,
-      "med": 24,
+      "high": 19,
+      "med": 10,
       "low": 3
     }
   },
@@ -173,8 +173,8 @@
     "file": "kobda.json",
     "count": 28,
     "center": [
-      50.1653,
-      55.7696
+      50.1561,
+      55.7639
     ],
     "bounds": [
       [
@@ -182,15 +182,15 @@
         54.530833
       ],
       [
-        50.956671,
+        50.957289,
         58.41913
       ]
     ],
     "groupCount": 25,
     "conf": {
-      "high": 3,
+      "high": 10,
       "low": 6,
-      "med": 19
+      "med": 12
     }
   },
   {
@@ -217,8 +217,7 @@
     "groupCount": 1,
     "conf": {
       "low": 1,
-      "high": 2,
-      "med": 1
+      "high": 3
     }
   },
   {
@@ -229,7 +228,7 @@
     "file": "alga.json",
     "count": 18,
     "center": [
-      49.6311,
+      49.6313,
       57.3791
     ],
     "bounds": [
@@ -244,8 +243,8 @@
     ],
     "groupCount": 2,
     "conf": {
-      "med": 14,
-      "high": 1,
+      "med": 8,
+      "high": 7,
       "low": 3
     }
   }

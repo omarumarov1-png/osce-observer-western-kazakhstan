@@ -71,6 +71,8 @@ a{color:inherit}
 .meta .bldg{font-size:12.5px;font-weight:600;line-height:1.3;color:#1e293b}
 .meta .addr{font-size:11.5px;color:var(--muted);line-height:1.35;margin-top:1px}
 .meta .grp{font-size:10.5px;color:var(--ac-d);font-weight:600;margin-top:2px}
+.tl{display:block;font-size:.92em;font-weight:400;font-style:italic;color:#94a3b8;line-height:1.3;margin-top:1px}
+.grp .tl{color:#94a3b8}
 .flag{display:inline-block;font-size:10px;font-weight:700;color:#b45309;background:#fffbeb;border:1px solid #fde68a;border-radius:5px;padding:0 5px;margin-top:3px}
 .flag.med{color:#0369a1;background:#f0f9ff;border-color:#bae6fd}
 #empty{padding:24px 18px;color:var(--muted);font-size:13px;text-align:center;display:none}
@@ -85,6 +87,7 @@ a{color:inherit}
 .leaflet-popup-content{margin:12px 14px 12px;min-width:210px}
 .pop b.t{font-size:14px;font-weight:800}
 .pop .chip2{display:inline-block;font-size:10px;font-weight:700;color:#fff;padding:1px 7px;border-radius:999px;margin-left:6px;vertical-align:1px;background:var(--ac)}
+.pop .chip2 + .tl{display:inline;font-size:10px;color:var(--muted);margin-left:5px}
 .pop .bd{font-size:12.5px;font-weight:600;margin-top:6px;color:#1e293b}
 .pop .ad{font-size:12px;color:#475569;margin-top:2px;line-height:1.4}
 .pop .co{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#334155;background:#f1f5f9;padding:3px 6px;border-radius:6px;margin-top:7px;display:inline-block;cursor:pointer}

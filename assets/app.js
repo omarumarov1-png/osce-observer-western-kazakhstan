@@ -5,6 +5,42 @@ let mapState = null; // holds Leaflet map + markers etc. for the currently open 
 
 function fmtOblastLabel(o){ return o; }
 
+/* ================= TRANSLITERATION (Cyrillic -> Latin) ================= */
+// Practical BGN/PCGN-style scheme covering Russian + Kazakh-specific letters.
+// Longer digraphs (ё, ж, ц, ч, ш, щ, ю, я, kazakh letters) must be listed before
+// any single-letter entries that could partially match, so we sort keys by length.
+const TRANSLIT_MAP = {
+  'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'yo','ж':'zh','з':'z','и':'i',
+  'й':'y','к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'r','с':'s','т':'t',
+  'у':'u','ф':'f','х':'kh','ц':'ts','ч':'ch','ш':'sh','щ':'shch','ъ':'','ы':'y',
+  'ь':'','э':'e','ю':'yu','я':'ya',
+  // Kazakh-specific
+  'ә':'a','ғ':'gh','қ':'q','ң':'ng','ө':'o','ұ':'u','ү':'u','һ':'h','і':'i',
+};
+const TRANSLIT_KEYS = Object.keys(TRANSLIT_MAP).sort((a,b)=>b.length-a.length);
+function transliterate(text){
+  if(!text) return '';
+  let out = '';
+  for(const ch of text){
+    const lower = ch.toLowerCase();
+    if(TRANSLIT_MAP.hasOwnProperty(lower)){
+      let t = TRANSLIT_MAP[lower];
+      if(ch !== lower && t) t = t[0].toUpperCase() + t.slice(1);
+      out += t;
+    } else {
+      out += ch;
+    }
+  }
+  // tidy up: capitalize after separators for readability, collapse doubled spaces
+  return out.replace(/\s+/g,' ').trim();
+}
+function hasCyrillic(text){ return /[а-яёәғқңөұүһіА-ЯЁӘҒҚҢӨҰҮҺІ]/.test(text || ''); }
+// small span with the transliteration, only rendered when the source text actually has Cyrillic
+function tl(text){
+  if(!hasCyrillic(text)) return '';
+  return `<span class="tl">${transliterate(text)}</span>`;
+}
+
 async function boot(){
   const res = await fetch('data/manifest.json');
   MANIFEST = await res.json();
@@ -111,9 +147,9 @@ function mountMap(id, meta, PECS){
       className:'', iconSize:[sz,sz], iconAnchor:[sz/2,sz/2], popupAnchor:[0,-sz/2-1]});
   }
   function popHtml(p){
-    let h = `<div class="pop"><b class="t">Station #${p.n}</b><span class="chip2" style="background:${colorFor(p.group)}">${p.group}</span>`;
-    if(p.b) h += `<div class="bd">${p.b}</div>`;
-    if(p.a) h += `<div class="ad">${p.a}</div>`;
+    let h = `<div class="pop"><b class="t">Station #${p.n}</b><span class="chip2" style="background:${colorFor(p.group)}">${p.group}</span>${tl(p.group)}`;
+    if(p.b) h += `<div class="bd">${p.b}${tl(p.b)}</div>`;
+    if(p.a) h += `<div class="ad">${p.a}${tl(p.a)}</div>`;
     h += `<div class="co" title="Copy coordinates" onclick="navigator.clipboard&&navigator.clipboard.writeText('${p.lat}, ${p.lng}')">${p.lat.toFixed(5)}, ${p.lng.toFixed(5)} ⧉</div>`;
     if(p.c==='low') h += `<div class="w">≈ Approximate location — verify on the ground${p.note?': '+p.note:''}</div>`;
     else if(p.c==='med') h += `<div class="w">Address not independently verified${p.note?' ("'+p.note+'")':''}</div>`;
@@ -206,7 +242,7 @@ function mountMap(id, meta, PECS){
       const row = document.createElement('div');
       row.className = 'row' + (p.n===selNum ? ' sel' : '');
       row.innerHTML = `<div class="num${approx?' approx':''}" style="${numStyle}">${p.n}</div>
-        <div class="meta"><div class="bldg">${p.b||'—'}</div><div class="addr">${p.a}</div><div class="grp">${p.group}</div>${approx?'<span class="flag">≈ verify on site</span>':(p.c==='med'?'<span class="flag med">unverified address</span>':'')}</div>`;
+        <div class="meta"><div class="bldg">${p.b||'—'}${tl(p.b)}</div><div class="addr">${p.a}${tl(p.a)}</div><div class="grp">${p.group}${tl(p.group)}</div>${approx?'<span class="flag">≈ verify on site</span>':(p.c==='med'?'<span class="flag med">unverified address</span>':'')}</div>`;
       row.onmouseenter = () => highlight(p.n, true);
       row.onmouseleave = () => highlight(p.n, false);
       row.onclick = () => { selNum = p.n; focusPec(p.n); render(); };
