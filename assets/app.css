@@ -5,7 +5,15 @@
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;width:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);overflow:hidden}
 a{color:inherit}
-#root{height:100vh;width:100vw;overflow:hidden}
+/* 100vh on mobile browsers is calculated against the LARGEST possible
+   viewport (address bar collapsed), not what's actually visible at first
+   paint (address bar still showing) -- combined with overflow:hidden below,
+   that gap used to be genuinely unreachable rather than just scrolled off,
+   which is what made the sidebar list "disappear" on phones. dvh tracks
+   the real visible viewport as the browser chrome shows/hides; the plain
+   vh line stays first as a fallback for the handful of older browsers that
+   don't support dvh yet. */
+#root{height:100vh;height:100dvh;width:100vw;overflow:hidden}
 
 /* ================= HOME VIEW ================= */
 #home{height:100%;overflow-y:auto;background:linear-gradient(180deg,#f8fafc,#eef2f7)}
@@ -104,11 +112,75 @@ a{color:inherit}
 .mbtn{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:7px 10px;font-size:12px;font-weight:600;cursor:pointer;box-shadow:0 1px 4px rgba(15,23,42,.10);color:#334155;text-align:left}
 .mbtn:hover{background:#f8fafc}
 .mbtn.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* "You are here" marker -- pulsing dot always shown once located; the
+   heading arrow only appears once a real compass reading comes in (see
+   app.js's comment on why we never fake a heading from unreliable
+   relative-orientation data). */
+.locwrap{position:relative;width:32px;height:32px}
+.locpulse{position:absolute;left:9px;top:9px;width:14px;height:14px;border-radius:50%}
+.locpulse::before{content:'';position:absolute;inset:-11px;border-radius:50%;background:rgba(29,78,216,.20);animation:locpulse 2.2s ease-out infinite}
+.locdot{position:absolute;left:9px;top:9px;width:14px;height:14px;border-radius:50%;background:#1d4ed8;border:2.5px solid #fff;box-shadow:0 1px 6px rgba(15,23,42,.45);z-index:2}
+.locrot{position:absolute;left:0;top:0;width:32px;height:32px;transform-origin:16px 16px;z-index:1}
+.locarrow{position:absolute;left:16px;top:0;width:0;height:0;margin-left:-6px;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:11px solid #1d4ed8;filter:drop-shadow(0 1px 1px rgba(15,23,42,.4))}
+@keyframes locpulse{0%{transform:scale(.5);opacity:.85}100%{transform:scale(1.6);opacity:0}}
 .leaflet-bar a{font-weight:700}
+
+.viewtoggle{display:none}
+
 @media(max-width:820px){
- #app{flex-direction:column}
- #side{width:100%;min-width:0;height:44vh;border-right:none;border-bottom:1px solid var(--line)}
- #mapwrap{height:56vh}
  .home-wrap{padding:32px 18px 48px}
  .home-head h1{font-size:26px}
+
+ /* A cramped 44/56 vertical split left almost no room for the list once
+    the header and search controls ate their share -- full-height Map/List
+    toggle instead (same pattern Google Maps/Airbnb use on mobile), so
+    whichever one is active gets the ENTIRE screen, not a sliver of it.
+    Both stay mounted (visibility:hidden, not display:none) rather than
+    removed from layout, so Leaflet's container always has real pixel
+    dimensions to size its tiles against -- a map initialized inside a
+    display:none/zero-size container is a classic way to end up with a
+    blank or misaligned tile grid. */
+ #app{flex-direction:column;position:relative;overflow:hidden}
+ #side{position:absolute;inset:0;width:100%;min-width:0;height:100%;border-right:none}
+ #mapwrap{position:absolute;inset:0;height:100%;width:100%}
+ #app.show-map #side{visibility:hidden;pointer-events:none}
+ #app:not(.show-map) #mapwrap{visibility:hidden;pointer-events:none}
+
+ #list{padding-bottom:78px} /* clears the floating toggle pill */
+
+ .viewtoggle{
+   display:flex;position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));
+   transform:translateX(-50%);z-index:2000;background:#0f172a;border-radius:999px;
+   padding:4px;gap:2px;box-shadow:0 6px 24px rgba(15,23,42,.35);
+ }
+ .viewtoggle button{
+   border:none;background:none;color:#94a3b8;font-size:13px;font-weight:700;
+   padding:10px 20px;border-radius:999px;cursor:pointer;
+ }
+ .viewtoggle button.on{background:#fff;color:#0f172a}
+
+ /* iOS Safari auto-zooms the page on focus for any text input/select whose
+    computed font-size is under 16px -- both were smaller than that, so
+    tapping the search box used to trigger an unwanted zoom-in on top of
+    everything else here. Desktop keeps the tighter sizing (see the base
+    rules above); this only widens it back up on phones. */
+ #q, #groupSel{font-size:16px}
+
+ /* Larger touch targets on the elements phones actually get tapped on --
+    the desktop sizing (5-9px padding) is comfortable with a mouse but
+    tight for a fingertip. */
+ .row{padding:12px 10px}
+ .seg{padding:9px 13px}
+ .mbtn{padding:10px 12px}
+
+ /* Leaflet's own bottom-anchored controls (the legend at bottom-right, the
+    scale bar at bottom-left) used to sit directly under the floating
+    Map/List toggle, overlapping it -- push both corners up to clear it.
+    The legend also had no width limit, so on a narrow phone its text could
+    run wider than the screen and get clipped off the right edge entirely;
+    capping it and letting it wrap fixes that regardless of screen width. */
+ .leaflet-bottom{bottom:66px}
+ .legend{max-width:min(220px,calc(100vw - 70px));box-sizing:border-box}
+ .legend .li{white-space:normal}
 }

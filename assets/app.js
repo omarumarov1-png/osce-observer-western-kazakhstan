@@ -2,6 +2,7 @@ const AC = '#1d4ed8';
 const GROUP_PALETTE = ['#1d4ed8', '#c2410c', '#059669', '#7c3aed', '#db2777', '#0891b2'];
 let MANIFEST = null;
 let mapState = null; // holds Leaflet map + markers etc. for the currently open region
+let activeLocate = null; // holds the live "you are here" watch for the currently open region, if on
 
 function fmtOblastLabel(o){ return o; }
 
@@ -101,6 +102,7 @@ async function openRegion(id){
   if(!meta){ window.location.hash = ''; return; }
   document.getElementById('home').style.display = 'none';
   document.getElementById('region').classList.add('active');
+  setMobileView('list'); // always open on the list on phones, same starting point every time
 
   if(mapState && mapState.id === id){ return; } // already loaded
   document.getElementById('side').querySelector('#head h1').textContent = meta.title + ' · Polling Stations';
@@ -112,8 +114,96 @@ async function openRegion(id){
   mountMap(id, meta, PECS);
 }
 
+/* ================= "YOU ARE HERE" LOCATION ================= */
+// Google-Maps-style blue dot + heading arrow. The arrow is only ever drawn
+// from a real compass reading (webkitCompassHeading on iOS, or an
+// explicitly `absolute` deviceorientation event elsewhere) -- plain
+// relative-orientation alpha is relative to wherever the phone happened to
+// be pointed when the page loaded, not true north, so showing an arrow
+// from it would silently mislead a field observer about which way they're
+// actually facing. No reading yet (or never granted) just means no arrow,
+// same as Google Maps itself.
+function locIcon(heading){
+  const arrow = (heading==null) ? '' : `<div class="locrot" style="transform:rotate(${heading}deg)"><div class="locarrow"></div></div>`;
+  return L.divIcon({html:`<div class="locwrap"><div class="locpulse"></div>${arrow}<div class="locdot"></div></div>`,
+    className:'', iconSize:[32,32], iconAnchor:[16,16]});
+}
+function stopLocate(){
+  if(!activeLocate) return;
+  if(activeLocate.watchId!=null) navigator.geolocation.clearWatch(activeLocate.watchId);
+  if(activeLocate.onOrient){
+    window.removeEventListener('deviceorientationabsolute', activeLocate.onOrient);
+    window.removeEventListener('deviceorientation', activeLocate.onOrient);
+  }
+  if(activeLocate.marker) activeLocate.map.removeLayer(activeLocate.marker);
+  if(activeLocate.circle) activeLocate.map.removeLayer(activeLocate.circle);
+  const btn = document.getElementById('locateBtn');
+  if(btn){ btn.classList.remove('on'); btn.textContent = '📍 My location'; }
+  activeLocate = null;
+}
+function startLocate(map){
+  if(!navigator.geolocation){ flashLocateError('Geolocation not supported'); return; }
+  const btn = document.getElementById('locateBtn');
+  let heading = null, centered = false;
+
+  function place(lat, lng, accuracy){
+    const ll = [lat, lng];
+    if(!activeLocate.marker){
+      activeLocate.marker = L.marker(ll, {icon:locIcon(heading), zIndexOffset:1000}).addTo(map);
+      activeLocate.circle = L.circle(ll, {radius:accuracy, color:'#1d4ed8', weight:1, opacity:.35, fillColor:'#1d4ed8', fillOpacity:.08}).addTo(map);
+    } else {
+      activeLocate.marker.setLatLng(ll);
+      activeLocate.circle.setLatLng(ll).setRadius(accuracy);
+    }
+    if(!centered){
+      centered = true;
+      map.setView(ll, Math.max(map.getZoom(), 15), {animate:true});
+      if(btn) btn.textContent = '◉ My location';
+    }
+  }
+
+  function onOrient(e){
+    let h = null;
+    if(typeof e.webkitCompassHeading === 'number') h = e.webkitCompassHeading; // iOS: already true heading
+    else if(e.absolute===true && typeof e.alpha === 'number') h = (360 - e.alpha) % 360; // spec-compliant absolute orientation
+    if(h==null) return;
+    heading = h;
+    if(activeLocate && activeLocate.marker) activeLocate.marker.setIcon(locIcon(heading));
+  }
+
+  function afterOrientPermission(){
+    window.addEventListener('deviceorientationabsolute', onOrient);
+    window.addEventListener('deviceorientation', onOrient);
+  }
+
+  const watchId = navigator.geolocation.watchPosition(
+    pos => place(pos.coords.latitude, pos.coords.longitude, pos.coords.accuracy || 30),
+    err => { flashLocateError(err.code===1 ? 'Location permission denied' : 'Location unavailable'); stopLocate(); },
+    {enableHighAccuracy:true, maximumAge:5000, timeout:15000}
+  );
+  activeLocate = {map, watchId, marker:null, circle:null, onOrient};
+  if(btn){ btn.classList.add('on'); btn.textContent = '◉ Locating…'; }
+
+  // iOS 13+ gates DeviceOrientationEvent behind an explicit, gesture-triggered
+  // permission prompt; every other browser just fires the event once you
+  // add a listener, no separate request call exists to make.
+  if(typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function'){
+    DeviceOrientationEvent.requestPermission().then(state => { if(state==='granted') afterOrientPermission(); }).catch(()=>{});
+  } else {
+    afterOrientPermission();
+  }
+}
+function flashLocateError(msg){
+  const btn = document.getElementById('locateBtn');
+  if(!btn) return;
+  const prev = btn.textContent;
+  btn.textContent = '⚠ ' + msg;
+  setTimeout(()=>{ if(btn.textContent==='⚠ ' + msg) btn.textContent = prev; }, 3000);
+}
+
 function mountMap(id, meta, PECS){
   // tear down any previous map instance
+  stopLocate();
   if(mapState && mapState.map){ mapState.map.remove(); mapState = null; }
   document.getElementById('loading').style.display = 'flex';
 
@@ -195,7 +285,8 @@ function mountMap(id, meta, PECS){
   const ctl = L.control({position:'topleft'});
   ctl.onAdd = function(){ const d=L.DomUtil.create('div','mapbtns');
     d.innerHTML = `<button class="mbtn" id="resetBtn" title="Show whole region">⤢ Whole region</button>
-      <button class="mbtn ${clustered?'on':''}" id="clusterBtn" title="Cluster nearby stations">◉ Cluster</button>`;
+      <button class="mbtn ${clustered?'on':''}" id="clusterBtn" title="Cluster nearby stations">◉ Cluster</button>
+      <button class="mbtn" id="locateBtn" title="Show my location on the map">📍 My location</button>`;
     L.DomEvent.disableClickPropagation(d);
     setTimeout(()=>{
       document.getElementById('resetBtn').onclick = () => map.fitBounds(allBounds, {padding:[40,40]});
@@ -205,6 +296,7 @@ function mountMap(id, meta, PECS){
         if(clustered){ map.removeLayer(plainLayer); map.addLayer(cluster); }
         else { map.removeLayer(cluster); plainLayer = L.layerGroup(); PECS.forEach(p=>plainLayer.addLayer(markers[p.n])); map.addLayer(plainLayer); }
       };
+      document.getElementById('locateBtn').onclick = () => { activeLocate ? stopLocate() : startLocate(map); };
     }, 0);
     return d; };
   ctl.addTo(map);
@@ -245,7 +337,7 @@ function mountMap(id, meta, PECS){
         <div class="meta"><div class="bldg">${p.b||'—'}${tl(p.b)}</div><div class="addr">${p.a}${tl(p.a)}</div><div class="grp">${p.group}${tl(p.group)}</div>${approx?'<span class="flag">≈ verify on site</span>':(p.c==='med'?'<span class="flag med">unverified address</span>':'')}</div>`;
       row.onmouseenter = () => highlight(p.n, true);
       row.onmouseleave = () => highlight(p.n, false);
-      row.onclick = () => { selNum = p.n; focusPec(p.n); render(); };
+      row.onclick = () => { selNum = p.n; focusPec(p.n); render(); if(window.innerWidth<=820) setMobileView('map'); };
       listEl.appendChild(row);
     });
     emptyEl.style.display = arr.length ? 'none' : 'block';
@@ -282,6 +374,26 @@ function mountMap(id, meta, PECS){
   render();
 
   mapState = {id, map};
+}
+
+// Phones get a full-height Map/List toggle instead of a cramped vertical
+// split (see the media query in app.css) -- this just flips which one is
+// visible and keeps the pill buttons in sync. Below the 820px breakpoint
+// the CSS for #app.show-map/:not(.show-map) does nothing, so calling this
+// on desktop is harmless (no toggle button is even shown there to trigger it).
+function setMobileView(mode){
+  const app = document.getElementById('app');
+  if(!app) return;
+  app.classList.toggle('show-map', mode==='map');
+  const listBtn = document.getElementById('toggleListBtn'), mapBtn = document.getElementById('toggleMapBtn');
+  if(listBtn) listBtn.classList.toggle('on', mode==='list');
+  if(mapBtn) mapBtn.classList.toggle('on', mode==='map');
+  // The map container has real dimensions even while visibility:hidden (see
+  // the CSS comment), but Leaflet still measured it back when tiles were
+  // first requested -- re-measuring after becoming visible is cheap and
+  // matches the same invalidateSize() calls mountMap() already does after
+  // its own initial layout settles.
+  if(mode==='map' && mapState && mapState.map) setTimeout(()=>mapState.map.invalidateSize(), 60);
 }
 
 function goHome(){ window.location.hash = ''; }
