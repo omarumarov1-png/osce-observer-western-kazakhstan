@@ -137,13 +137,18 @@ function stopLocate(){
   }
   if(activeLocate.marker) activeLocate.map.removeLayer(activeLocate.marker);
   if(activeLocate.circle) activeLocate.map.removeLayer(activeLocate.circle);
-  const btn = document.getElementById('locateBtn');
-  if(btn){ btn.classList.remove('on'); btn.textContent = '📍 My location'; }
   activeLocate = null;
 }
+// Starts automatically whenever a region's map mounts (see the end of
+// mountMap()) rather than behind a button tap -- the browser's own native
+// permission prompt is what actually gates this, so there's no need for
+// an extra in-app affordance on top of it. The one real cost of no longer
+// requiring a tap: iOS gates DeviceOrientationEvent (the compass heading)
+// behind a permission call that ONLY works from inside a user gesture, so
+// without a click to hang that call off, iOS users will see the location
+// dot but never the heading arrow. Every other platform is unaffected.
 function startLocate(map){
-  if(!navigator.geolocation){ flashLocateError('Geolocation not supported'); return; }
-  const btn = document.getElementById('locateBtn');
+  if(!navigator.geolocation) return;
   let heading = null, centered = false;
 
   function place(lat, lng, accuracy){
@@ -158,7 +163,6 @@ function startLocate(map){
     if(!centered){
       centered = true;
       map.setView(ll, Math.max(map.getZoom(), 15), {animate:true});
-      if(btn) btn.textContent = '◉ My location';
     }
   }
 
@@ -178,27 +182,19 @@ function startLocate(map){
 
   const watchId = navigator.geolocation.watchPosition(
     pos => place(pos.coords.latitude, pos.coords.longitude, pos.coords.accuracy || 30),
-    err => { flashLocateError(err.code===1 ? 'Location permission denied' : 'Location unavailable'); stopLocate(); },
+    err => { console.warn('Geolocation unavailable:', err.message); stopLocate(); },
     {enableHighAccuracy:true, maximumAge:5000, timeout:15000}
   );
   activeLocate = {map, watchId, marker:null, circle:null, onOrient};
-  if(btn){ btn.classList.add('on'); btn.textContent = '◉ Locating…'; }
 
-  // iOS 13+ gates DeviceOrientationEvent behind an explicit, gesture-triggered
-  // permission prompt; every other browser just fires the event once you
-  // add a listener, no separate request call exists to make.
+  // No user gesture available here (this runs on map mount, not a click),
+  // so on iOS this permission call will simply never resolve -- everywhere
+  // else it's a no-op requirement and the listener attaches immediately.
   if(typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function'){
     DeviceOrientationEvent.requestPermission().then(state => { if(state==='granted') afterOrientPermission(); }).catch(()=>{});
   } else {
     afterOrientPermission();
   }
-}
-function flashLocateError(msg){
-  const btn = document.getElementById('locateBtn');
-  if(!btn) return;
-  const prev = btn.textContent;
-  btn.textContent = '⚠ ' + msg;
-  setTimeout(()=>{ if(btn.textContent==='⚠ ' + msg) btn.textContent = prev; }, 3000);
 }
 
 function mountMap(id, meta, PECS){
@@ -285,8 +281,7 @@ function mountMap(id, meta, PECS){
   const ctl = L.control({position:'topleft'});
   ctl.onAdd = function(){ const d=L.DomUtil.create('div','mapbtns');
     d.innerHTML = `<button class="mbtn" id="resetBtn" title="Show whole region">⤢ Whole region</button>
-      <button class="mbtn ${clustered?'on':''}" id="clusterBtn" title="Cluster nearby stations">◉ Cluster</button>
-      <button class="mbtn" id="locateBtn" title="Show my location on the map">📍 My location</button>`;
+      <button class="mbtn ${clustered?'on':''}" id="clusterBtn" title="Cluster nearby stations">◉ Cluster</button>`;
     L.DomEvent.disableClickPropagation(d);
     setTimeout(()=>{
       document.getElementById('resetBtn').onclick = () => map.fitBounds(allBounds, {padding:[40,40]});
@@ -296,10 +291,10 @@ function mountMap(id, meta, PECS){
         if(clustered){ map.removeLayer(plainLayer); map.addLayer(cluster); }
         else { map.removeLayer(cluster); plainLayer = L.layerGroup(); PECS.forEach(p=>plainLayer.addLayer(markers[p.n])); map.addLayer(plainLayer); }
       };
-      document.getElementById('locateBtn').onclick = () => { activeLocate ? stopLocate() : startLocate(map); };
     }, 0);
     return d; };
   ctl.addTo(map);
+  startLocate(map);
 
   const groups = [...new Set(PECS.map(p=>p.group))].sort((a,b)=>a.localeCompare(b,'ru'));
   document.getElementById('cGrp').textContent = groups.length;
