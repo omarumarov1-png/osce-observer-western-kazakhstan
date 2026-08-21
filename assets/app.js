@@ -310,12 +310,12 @@ function mountMap(id, meta, PECS){
   const colorFor = (group) => multiColor ? groupColor[group] : AC;
 
   const bases = {
+    'OSM': L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {subdomains:'abc', maxZoom:19, attribution:'© OpenStreetMap'}),
     'Streets': L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {subdomains:'abcd', maxZoom:20, attribution:'© OpenStreetMap © CARTO'}),
     'Light': L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {subdomains:'abcd', maxZoom:20, attribution:'© OpenStreetMap © CARTO'}),
-    'OSM': L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {subdomains:'abc', maxZoom:19, attribution:'© OpenStreetMap'}),
     'Satellite': L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {maxZoom:19, attribution:'© Esri'}),
   };
-  const activeBase = bases['Streets'];
+  const activeBase = bases['OSM'];
   activeBase.addTo(map);
   activeBase.on('load', () => { const l=document.getElementById('loading'); if(l) l.style.display='none'; });
   setTimeout(()=>{ const l=document.getElementById('loading'); if(l) l.style.display='none'; }, 2500);
@@ -344,20 +344,13 @@ function mountMap(id, meta, PECS){
   }
 
   const markers = {};
-  let cluster = null, plainLayer = L.layerGroup();
-  const hasCluster = (typeof L.markerClusterGroup === 'function');
-  if(hasCluster){
-    cluster = L.markerClusterGroup({maxClusterRadius:36, spiderfyOnMaxZoom:true, showCoverageOnHover:false,
-      iconCreateFunction:c=>{ const n=c.getChildCount(); const sz=n<10?34:n<40?42:50;
-        return L.divIcon({html:`<div style="width:${sz}px;height:${sz}px;border-radius:50%;background:#0f172a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;border:3px solid #fff;box-shadow:0 1px 6px rgba(0,0,0,.45)">${n}</div>`, className:'', iconSize:[sz,sz]});}});
-  }
+  const markerLayer = L.layerGroup();
   PECS.forEach(p=>{
     const m = L.marker([p.lat, p.lng], {icon:pinIcon(p,false)});
     m.bindPopup(popHtml(p)); m._pec = p; markers[p.n] = m;
-    (hasCluster?cluster:plainLayer).addLayer(m);
+    markerLayer.addLayer(m);
   });
-  let clustered = hasCluster;
-  map.addLayer(clustered?cluster:plainLayer);
+  map.addLayer(markerLayer);
 
   const allBounds = L.latLngBounds(PECS.map(p=>[p.lat,p.lng]));
   map.fitBounds(allBounds, {padding:[40,40]});
@@ -371,24 +364,16 @@ function mountMap(id, meta, PECS){
       : `<div class="li"><span class="lm" style="background:${AC};color:#fff;border:2px solid #fff">№</span> polling station</div>`;
     d.innerHTML = `<h4>General info</h4>
       ${districtRows}
-      <div class="li"><span class="lm" style="background:#fff;border:2px dashed ${AC};color:${AC}">≈</span> approximate — verify</div>
-      <div class="li"><span class="lm" style="background:#0f172a;color:#fff">15</span> cluster (click to expand)</div>`;
+      <div class="li"><span class="lm" style="background:#fff;border:2px dashed ${AC};color:${AC}">≈</span> approximate — verify</div>`;
     L.DomEvent.disableClickPropagation(d); return d; };
   lg.addTo(map);
 
   const ctl = L.control({position:'topleft'});
   ctl.onAdd = function(){ const d=L.DomUtil.create('div','mapbtns');
-    d.innerHTML = `<button class="mbtn" id="resetBtn" title="Show whole region">⤢ Whole region</button>
-      <button class="mbtn ${clustered?'on':''}" id="clusterBtn" title="Cluster nearby stations">◉ Cluster</button>`;
+    d.innerHTML = `<button class="mbtn" id="resetBtn" title="Show whole region">⤢ Whole region</button>`;
     L.DomEvent.disableClickPropagation(d);
     setTimeout(()=>{
       document.getElementById('resetBtn').onclick = () => map.fitBounds(allBounds, {padding:[40,40]});
-      document.getElementById('clusterBtn').onclick = function(){
-        if(!hasCluster) return;
-        clustered = !clustered; this.classList.toggle('on', clustered);
-        if(clustered){ map.removeLayer(plainLayer); map.addLayer(cluster); }
-        else { map.removeLayer(cluster); plainLayer = L.layerGroup(); PECS.forEach(p=>plainLayer.addLayer(markers[p.n])); map.addLayer(plainLayer); }
-      };
     }, 0);
     return d; };
   ctl.addTo(map);
@@ -440,13 +425,8 @@ function mountMap(id, meta, PECS){
   function highlight(n, on){ const m = markers[n]; if(!m) return; m.setIcon(pinIcon(m._pec, on)); }
   function focusPec(n){
     const m = markers[n]; if(!m) return;
-    const go = () => m.openPopup();
-    if(clustered && hasCluster && cluster.zoomToShowLayer){
-      cluster.zoomToShowLayer(m, go);
-    } else {
-      map.setView(m.getLatLng(), 15, {animate:true});
-      setTimeout(go, 300);
-    }
+    map.setView(m.getLatLng(), 15, {animate:true});
+    setTimeout(() => m.openPopup(), 300);
   }
   qEl.oninput = render;
   clrBtn.onclick = () => { qEl.value=''; render(); qEl.focus(); };
