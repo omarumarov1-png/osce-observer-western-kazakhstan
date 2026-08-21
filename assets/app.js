@@ -3,8 +3,82 @@ const GROUP_PALETTE = ['#1d4ed8', '#c2410c', '#059669', '#7c3aed', '#db2777', '#
 let MANIFEST = null;
 let mapState = null; // holds Leaflet map + markers etc. for the currently open region
 let activeLocate = null; // holds the live "you are here" watch for the currently open region, if on
+let activeRoute = null; // holds the drawn route line + info panel for the currently displayed route, if any
 
 function fmtOblastLabel(o){ return o; }
+
+/* ================= ROUTE TO A STATION ================= */
+// Distance + ETA + an actual road-following route, from wherever the
+// "you are here" dot currently is to a chosen polling station. Straight-
+// line distance is trivial (both points are known already); a real route
+// and travel time need an actual road network, which the map's tiles
+// don't provide -- routing goes through OSRM's free public demo server
+// (no API key, but a shared instance with no uptime guarantee, and
+// driving directions only -- it doesn't serve a walking/cycling profile).
+function fmtRouteDistance(meters){
+  return meters < 1000 ? `${Math.round(meters)} m` : `${(meters/1000).toFixed(meters<10000?1:0)} km`;
+}
+function fmtRouteDuration(seconds){
+  const min = Math.round(seconds/60);
+  if(min < 60) return `${min} min`;
+  return `${Math.floor(min/60)} h ${min%60} min`;
+}
+function stopRoute(){
+  if(!activeRoute) return;
+  if(activeRoute.layer) activeRoute.map.removeLayer(activeRoute.layer);
+  if(activeRoute.info) activeRoute.map.removeControl(activeRoute.info);
+  activeRoute = null;
+}
+function showRouteInfo(map, html, isErr){
+  stopRoute();
+  const ctl = L.control({position:'bottomright'});
+  ctl.onAdd = function(){
+    const d = L.DomUtil.create('div', 'routeinfo' + (isErr ? ' err' : ''));
+    d.innerHTML = html;
+    L.DomEvent.disableClickPropagation(d);
+    return d;
+  };
+  ctl.addTo(map);
+  activeRoute = {map, layer:null, info:ctl};
+}
+async function routeToStation(n){
+  if(!mapState || !mapState.map || !mapState.markers) return;
+  const map = mapState.map;
+  const pec = mapState.markers[n] && mapState.markers[n]._pec;
+  if(!pec) return;
+  if(!activeLocate || !activeLocate.marker){
+    showRouteInfo(map, `<div class="ri-row">Waiting for your location — allow location access, then try again.</div>`, true);
+    return;
+  }
+  map.closePopup();
+  const from = activeLocate.marker.getLatLng();
+  showRouteInfo(map, `<div class="ri-row">Routing to station #${n}…</div>`);
+  try {
+    const url = `https://router.project-osrm.org/route/v1/driving/${from.lng},${from.lat};${pec.lng},${pec.lat}?overview=full&geometries=geojson`;
+    const res = await fetch(url);
+    if(!res.ok) throw new Error('routing service returned ' + res.status);
+    const data = await res.json();
+    const route = data.routes && data.routes[0];
+    if(!route) throw new Error('no route found');
+    stopRoute();
+    const layer = L.geoJSON(route.geometry, {style:{color:'#1d4ed8', weight:5, opacity:.72}}).addTo(map);
+    map.fitBounds(layer.getBounds(), {padding:[50,50]});
+    const ctl = L.control({position:'bottomright'});
+    ctl.onAdd = function(){
+      const d = L.DomUtil.create('div', 'routeinfo');
+      d.innerHTML = `<div class="ri-row"><b>Station #${n}</b> · ${fmtRouteDistance(route.distance)} · ${fmtRouteDuration(route.duration)} drive</div>
+        <button class="mbtn" id="clearRouteBtn">✕ Clear route</button>`;
+      L.DomEvent.disableClickPropagation(d);
+      setTimeout(()=>{ const b=document.getElementById('clearRouteBtn'); if(b) b.onclick = stopRoute; }, 0);
+      return d;
+    };
+    ctl.addTo(map);
+    activeRoute = {map, layer, info:ctl};
+  } catch(err){
+    console.warn('Routing failed:', err.message);
+    showRouteInfo(map, `<div class="ri-row">Couldn't get a route right now — the free routing server may be busy. Try again in a moment.</div>`, true);
+  }
+}
 
 /* ================= TRANSLITERATION (Cyrillic -> Latin) ================= */
 // Practical BGN/PCGN-style scheme covering Russian + Kazakh-specific letters.
@@ -223,6 +297,7 @@ function startLocate(map){
 function mountMap(id, meta, PECS){
   // tear down any previous map instance
   stopLocate();
+  stopRoute();
   if(mapState && mapState.map){ mapState.map.remove(); mapState = null; }
   document.getElementById('loading').style.display = 'flex';
 
@@ -264,7 +339,7 @@ function mountMap(id, meta, PECS){
     else if(p.c==='med') h += `<div class="w">Address not independently verified${p.note?' ("'+p.note+'")':''}</div>`;
     const g = `https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lng}`;
     const y = `https://yandex.ru/maps/?pt=${p.lng},${p.lat}&z=16&l=map`;
-    h += `<div class="links"><a href="${g}" target="_blank" rel="noopener">Google&nbsp;Maps</a><a href="${y}" target="_blank" rel="noopener">Yandex&nbsp;Maps</a></div></div>`;
+    h += `<div class="links"><a href="${g}" target="_blank" rel="noopener">Google&nbsp;Maps</a><a href="${y}" target="_blank" rel="noopener">Yandex&nbsp;Maps</a><a href="#" onclick="routeToStation(${p.n});return false;">🧭&nbsp;Route&nbsp;here</a></div></div>`;
     return h;
   }
 
@@ -391,7 +466,7 @@ function mountMap(id, meta, PECS){
   map.on('popupopen', e => { if(e.popup._source && e.popup._source._pec){ selNum = e.popup._source._pec.n; render(); } });
   render();
 
-  mapState = {id, map};
+  mapState = {id, map, markers};
 }
 
 // Phones get a full-height Map/List toggle instead of a cramped vertical
