@@ -339,7 +339,7 @@ function mountMap(id, meta, PECS){
     else if(p.c==='med') h += `<div class="w">Address not independently verified${p.note?' ("'+p.note+'")':''}</div>`;
     const g = `https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lng}`;
     const y = `https://yandex.ru/maps/?pt=${p.lng},${p.lat}&z=16&l=map`;
-    h += `<div class="links"><a href="${g}" target="_blank" rel="noopener">Google&nbsp;Maps</a><a href="${y}" target="_blank" rel="noopener">Yandex&nbsp;Maps</a><a href="#" onclick="routeToStation(${p.n});return false;">🧭&nbsp;Route&nbsp;here</a></div></div>`;
+    h += `<div class="links"><a href="${g}" target="_blank" rel="noopener">Google&nbsp;Maps</a><a href="${y}" target="_blank" rel="noopener">Yandex&nbsp;Maps</a></div></div>`;
     return h;
   }
 
@@ -369,7 +369,7 @@ function mountMap(id, meta, PECS){
     const districtRows = multiColor
       ? allGroups.map(g=>`<div class="li"><span class="lm" style="background:${groupColor[g]};color:#fff;border:2px solid #fff">№</span> ${g}</div>`).join('')
       : `<div class="li"><span class="lm" style="background:${AC};color:#fff;border:2px solid #fff">№</span> polling station</div>`;
-    d.innerHTML = `<h4>Legend</h4>
+    d.innerHTML = `<h4>General info</h4>
       ${districtRows}
       <div class="li"><span class="lm" style="background:#fff;border:2px dashed ${AC};color:${AC}">≈</span> approximate — verify</div>
       <div class="li"><span class="lm" style="background:#0f172a;color:#fff">15</span> cluster (click to expand)</div>`;
@@ -463,7 +463,17 @@ function mountMap(id, meta, PECS){
     this.textContent = 'Sort: ' + (sortMode==='num' ? '# ▲' : 'by name');
     render();
   };
-  map.on('popupopen', e => { if(e.popup._source && e.popup._source._pec){ selNum = e.popup._source._pec.n; render(); } });
+  // Selecting a station -- clicking its marker directly, or clicking its
+  // list row (which calls focusPec -> openPopup) -- fires this same event
+  // either way, so it's the one place that needs to trigger routing
+  // automatically instead of requiring a separate "Route here" tap.
+  map.on('popupopen', e => {
+    if(e.popup._source && e.popup._source._pec){
+      selNum = e.popup._source._pec.n;
+      render();
+      routeToStation(selNum);
+    }
+  });
   render();
 
   mapState = {id, map, markers};
