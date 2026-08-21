@@ -115,14 +115,27 @@ async function openRegion(id){
 }
 
 /* ================= "YOU ARE HERE" LOCATION ================= */
-// Google-Maps-style blue dot + heading arrow. The arrow is only ever drawn
-// from a real compass reading (webkitCompassHeading on iOS, or an
-// explicitly `absolute` deviceorientation event elsewhere) -- plain
-// relative-orientation alpha is relative to wherever the phone happened to
-// be pointed when the page loaded, not true north, so showing an arrow
-// from it would silently mislead a field observer about which way they're
-// actually facing. No reading yet (or never granted) just means no arrow,
-// same as Google Maps itself.
+// Google-Maps-style blue dot + heading arrow. The arrow is drawn from
+// whichever of two real (never guessed) heading sources is currently
+// available:
+//   1. Compass (webkitCompassHeading on iOS, or an explicitly `absolute`
+//      deviceorientation event elsewhere) -- true heading, updates even
+//      while standing still. Plain relative-orientation alpha is relative
+//      to wherever the phone happened to be pointed when the page loaded,
+//      not true north, so it's never used -- that would silently mislead
+//      a field observer about which way they're actually facing.
+//   2. GPS course-over-ground (Coords.heading from watchPosition) -- the
+//      direction of actual travel, only reported while moving. This needs
+//      no permission prompt at all, so it's what gives iOS users an arrow
+//      in practice: iOS gates DeviceOrientationEvent behind a permission
+//      call that only works from inside a user gesture, and there's no
+//      button left to hang that off since location now starts
+//      automatically on map mount (see startLocate below). Once a real
+//      compass reading does arrive it takes over permanently -- it's more
+//      precise and works standing still, GPS heading is just the fallback
+//      for whenever compass isn't available.
+// No reading from either source yet just means no arrow, same as Google
+// Maps itself.
 function locIcon(heading){
   const arrow = (heading==null) ? '' : `<div class="locrot" style="transform:rotate(${heading}deg)"><div class="locarrow"></div></div>`;
   return L.divIcon({html:`<div class="locwrap"><div class="locpulse"></div>${arrow}<div class="locdot"></div></div>`,
@@ -145,19 +158,28 @@ function stopLocate(){
 // an extra in-app affordance on top of it. The one real cost of no longer
 // requiring a tap: iOS gates DeviceOrientationEvent (the compass heading)
 // behind a permission call that ONLY works from inside a user gesture, so
-// without a click to hang that call off, iOS users will see the location
-// dot but never the heading arrow. Every other platform is unaffected.
+// without a click to hang that call off, iOS users never get a compass
+// reading -- the GPS-course fallback in place() below is what covers that
+// gap in practice, since it needs no permission at all.
 function startLocate(map){
   if(!navigator.geolocation) return;
-  let heading = null, centered = false;
+  let heading = null, centered = false, usingCompass = false;
 
-  function place(lat, lng, accuracy){
+  function place(lat, lng, accuracy, gpsHeading){
     const ll = [lat, lng];
+    // Only fall back to GPS course-over-ground while no compass reading
+    // has ever arrived -- once the compass is live it's strictly better
+    // (works standing still, doesn't need movement) and should win for
+    // good rather than fight with GPS updates for the same arrow.
+    if(!usingCompass && typeof gpsHeading === 'number' && !Number.isNaN(gpsHeading)){
+      heading = gpsHeading;
+    }
     if(!activeLocate.marker){
       activeLocate.marker = L.marker(ll, {icon:locIcon(heading), zIndexOffset:1000}).addTo(map);
       activeLocate.circle = L.circle(ll, {radius:accuracy, color:'#1d4ed8', weight:1, opacity:.35, fillColor:'#1d4ed8', fillOpacity:.08}).addTo(map);
     } else {
       activeLocate.marker.setLatLng(ll);
+      activeLocate.marker.setIcon(locIcon(heading));
       activeLocate.circle.setLatLng(ll).setRadius(accuracy);
     }
     if(!centered){
@@ -171,6 +193,7 @@ function startLocate(map){
     if(typeof e.webkitCompassHeading === 'number') h = e.webkitCompassHeading; // iOS: already true heading
     else if(e.absolute===true && typeof e.alpha === 'number') h = (360 - e.alpha) % 360; // spec-compliant absolute orientation
     if(h==null) return;
+    usingCompass = true;
     heading = h;
     if(activeLocate && activeLocate.marker) activeLocate.marker.setIcon(locIcon(heading));
   }
@@ -181,7 +204,7 @@ function startLocate(map){
   }
 
   const watchId = navigator.geolocation.watchPosition(
-    pos => place(pos.coords.latitude, pos.coords.longitude, pos.coords.accuracy || 30),
+    pos => place(pos.coords.latitude, pos.coords.longitude, pos.coords.accuracy || 30, pos.coords.heading),
     err => { console.warn('Geolocation unavailable:', err.message); stopLocate(); },
     {enableHighAccuracy:true, maximumAge:5000, timeout:15000}
   );
