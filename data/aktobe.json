@@ -734,10 +734,10 @@
     "group": "район Алматы",
     "b": "Управление полиции города Актобе ДП Актюбинской области МВД РК",
     "a": "район Алматы, улица Нагима Кобландина, 25",
-    "lat": 50.292781,
-    "lng": 57.128899,
+    "lat": 50.283136,
+    "lng": 57.22142,
     "c": "med",
-    "note": "Управление полиции г. Актобе (2GIS direct match, was 6.1km off)"
+    "note": "Управление полиции г. Актобе, ул. Кобландина — corrected via 2GIS-confirmed coordinates for house numbers 26/26а on the same street (previous coordinate was ~6.7km away, on the wrong side of the railway from its own district)"
   },
   {
     "n": 75,
@@ -884,10 +884,10 @@
     "group": "район Астана",
     "b": "Учреждение №70",
     "a": "район Астана, улица Павлова, 3",
-    "lat": 50.301,
-    "lng": 57.21,
+    "lat": 50.274768,
+    "lng": 57.214024,
     "c": "low",
-    "note": "ул. Павлова (approx)"
+    "note": "ул. Павлова — corrected to the street's Yandex Maps center point (previous coordinate was ~2.9km away, on the wrong side of the railway; still approximate since house-number-level confirmation for #3 wasn't found)"
   },
   {
     "n": 90,
@@ -1224,10 +1224,10 @@
     "group": "район Алматы",
     "b": "Ясли-сад №30 «Ұрпақ",
     "a": "район Алматы, улица Т.Н.Шевченко, 34",
-    "lat": 50.293133,
-    "lng": 57.161923,
+    "lat": 50.255527,
+    "lng": 57.24284,
     "c": "high",
-    "note": "Urpaq/Ұрпақ ясли-сад (2GIS direct name match, was 7.1km off)"
+    "note": "Ясли-сад №30 «Ұрпақ», ул. Шевченко 34 — corrected via Yandex Maps org listing for this exact named kindergarten (previous coordinate was ~7.1km away, on the wrong side of the railway from its own district)"
   },
   {
     "n": 125,
